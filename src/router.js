@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 import Ciodes from './views/Ciodes.vue'
 import Login from './views/Login.vue'
 

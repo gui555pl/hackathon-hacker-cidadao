@@ -11,7 +11,7 @@
                         <v-card-title style="background: #E0E0E0">
                             <v-layout>
                                 <v-flex style="text-align: left">
-                                    {{ocorrencia['.uid']}}
+                                    {{ocorrencia.number}}
                                 </v-flex>
                             </v-layout>
                         </v-card-title>
@@ -75,8 +75,13 @@ export default {
     fiery: true,
     data() {
         return {
-            ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias')),
+            ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias'), {
+                query: q => q.where( "samu" ,'==', true).orderBy('creation_timestamp', 'desc'),
+            })
         }
+    },
+    created(){
+        console.log(this.$store.state.tipoUsuario)
     },
     methods: {
         goTo (ocorrencia) {

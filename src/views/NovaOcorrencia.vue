@@ -49,8 +49,34 @@
                     
                 </v-flex>
             </v-layout>
+            <v-layout>
+                <v-dialog
+                v-model="confirmDialog"
+                >
+                    <v-card>
+                        <v-card-text style="font-weight: 500; font-size: 1.5em; color: black; padding-top: 16px; padding-bottom: 10px;">Ocorrência criada com sucesso!</v-card-text>
+
+
+                        <v-card-text>
+                        Ocorrência confirmada! Os agentes mais próximos dos órgãos selecionados serão direcionados ao local em instantes.
+                        </v-card-text>
+
+                        <v-card-actions>
+                        <div class="flex-grow-1"></div>
+                        <v-btn
+                            color="green darken-1"
+                            text
+                            @click="goHome()"
+                        >
+                            Voltar à página principal
+                        </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </v-layout>
         </v-container>
     </div>
+    
 </template>
 <script>
 import firebase from 'firebase'
@@ -68,7 +94,8 @@ export default {
             cttu: false,
             bombeiro: false,
             prf: false,
-            pm: false
+            pm: false,
+            confirmDialog: false
 
         }
     },
@@ -78,7 +105,9 @@ export default {
             var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
             var today = new Date();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var number = Math.floor(100000000 + Math.random() * 900000000);
             this.$fires.ocorrencias.add({
+                number: number,
                 logradouro: this.logradouro,
                 ponto_referência: this.referencia,
                 tipo_ocorrencia: this.tipo,
@@ -90,7 +119,13 @@ export default {
                 pm: this.pm,
                 creation_timestamp: Math.floor((new Date().getTime())/1000),
                 creation_date : date,
-                creation_time: time
+                creation_time: time,
+                arrived_samu: false,
+                arrived_cttu: false,
+                arrived_bptran: false,
+                arrived_bombeiro: false,
+                arrived_prf: false,
+                arrived_pm: false
 
 
             })
@@ -103,9 +138,13 @@ export default {
             this.bombeiro = false
             this.prf = false
             this.pm = false
-            this.$router.push('/ciodes')
+            this.confirmDialog = true
 
+        },
+        goHome(){
+            this.$router.push('/ciodes')
         }
+       
     }
 }
 </script>

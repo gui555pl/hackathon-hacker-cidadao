@@ -6,11 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     type: '',
-    selectedOcorrencia: ''
+    selectedOcorrencia: '',
+    tipoUsuario: ''
+
   },
   mutations: {
     setType (state, payload) {
-      state.type = payload
+      state.tipoUsuario = payload
     },
     setOcorrencia (state, payload) {
       state.selectedOcorrencia = payload

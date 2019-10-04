@@ -11,6 +11,9 @@ import VuexPersistence from 'vuex-persist'
 global.$ = jQuery
 Vue.config.productionTip = false
 
+import Toolbar from './components/AppToolbar.vue'
+Vue.component('app-toolbar', Toolbar)
+
 Vue.use(FieryVue)
 Vue.use(VuexPersistence)
 new Vue({

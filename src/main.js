@@ -15,7 +15,9 @@ import Toolbar from './components/AppToolbar.vue'
 Vue.component('app-toolbar', Toolbar)
 
 Vue.use(FieryVue)
-Vue.use(VuexPersistence)
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+});
 new Vue({
   router,
   store,

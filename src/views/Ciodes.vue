@@ -22,6 +22,9 @@
 export default {
     
     data(){
+        return {
+            
+        }
     },
     methods: {
         novaOcorrencia(){

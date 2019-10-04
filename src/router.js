@@ -42,6 +42,14 @@ export default new Router({
       meta:{
         show: true            
       }
+    },
+    {
+      path: '/ocorrencia',
+      name: 'ocorrencia',
+      component: Ocorrencia,
+      meta:{
+        show: true            
+      }
     }
 
   ]

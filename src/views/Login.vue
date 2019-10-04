@@ -31,7 +31,7 @@
                                 <form>
                                     <v-flex xs12>
                                         <v-text-field
-                                        v-model="name"
+                                        v-model="cod"
                                         light
                                         hide-details
                                         style="border-radius: 0px"
@@ -101,10 +101,11 @@ export default {
     data(){
         return{
             loading: false,
-            name: ''
+            cod: ''
         }
     },
     mounted(){
+        //this.$store.commit('reset')
     },
     computed: {
     },
@@ -112,7 +113,7 @@ export default {
     },
     methods: {
         login(){
-            this.$store.commit('setType', this.name)
+            this.$store.commit('setType', this.cod)
             var self = this
             this.loading = true;
             setTimeout(function(){ 

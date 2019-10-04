@@ -48,9 +48,12 @@ export default {
     data() {
         return {
             ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias'), {
-                query: q => q.where( this.$store.state.type,'==', true).orderBy('creation_timestamp', 'desc'),
+                query: q => q.where( this.$store.state.tipoUsuario,'==', true).orderBy('creation_timestamp', 'desc'),
             })
         }
+    },
+    created(){
+        console.log(this.$store.state.tipoUsuario)
     },
     methods: {
         goTo (ocorrencia) {

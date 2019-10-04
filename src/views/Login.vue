@@ -112,7 +112,7 @@ export default {
     },
     methods: {
         login(){
-            this.$store.commit('setType', name)
+            this.$store.commit('setType', this.name)
             var self = this
             this.loading = true;
             setTimeout(function(){ 

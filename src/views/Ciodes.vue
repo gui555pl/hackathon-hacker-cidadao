@@ -11,17 +11,23 @@
                             <v-btn class="buttonCiodes">Consultar/Alterar</v-btn>
                         </v-flex>
                     </v-layout>
+
                 </v-flex>
             </v-layout>
         </v-container>
     </div>
 </template>
 <script>
+
 export default {
+    
+    data(){
+    },
     methods: {
         novaOcorrencia(){
             this.$router.push('/novaocorrencia')
         }
+    
     }
 }
 </script>

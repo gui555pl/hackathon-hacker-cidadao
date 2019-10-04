@@ -4,9 +4,11 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import '@babel/polyfill'
+import FieryVue from 'fiery-vue'
 import firebase from 'firebase'
 Vue.config.productionTip = false
 
+Vue.use(FieryVue)
 new Vue({
   router,
   store,

@@ -58,3 +58,10 @@ export default {
     }
 }
 </script>
+<style>
+.fontes{
+        color: white;
+        font-size: 50px;
+       
+    }
+</style>

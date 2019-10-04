@@ -7,10 +7,12 @@ import '@babel/polyfill'
 import FieryVue from 'fiery-vue'
 import jQuery from 'jquery'
 import firebase from 'firebase'
+import VuexPersistence from 'vuex-persist'
 global.$ = jQuery
 Vue.config.productionTip = false
 
 Vue.use(FieryVue)
+Vue.use(VuexPersistence)
 new Vue({
   router,
   store,

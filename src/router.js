@@ -16,22 +16,31 @@ export default new Router({
       component: Login,
       meta:{
         show: false            
-    }
+      }
     },
     {
       path: '/ciodes',
       name: 'ciodes',
-      component: Ciodes
+      component: Ciodes,
+      meta:{
+        show: true            
+      }
     },
     {
       path: '/novaocorrencia',
       name: 'novaOcorrencia',
-      component: NovaOcorrencia
+      component: NovaOcorrencia,
+      meta:{
+        show: true            
+      }
     },
     {
       path: '/ocorrencias',
       name: 'ocorrencias',
-      component: Ocorrencias
+      component: Ocorrencias,
+      meta:{
+        show: true            
+      }
     }
 
   ]

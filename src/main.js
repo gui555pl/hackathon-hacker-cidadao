@@ -6,9 +6,11 @@ import vuetify from './plugins/vuetify';
 import '@babel/polyfill'
 import jQuery from 'jquery'
 global.$ = jQuery
-
 import firebase from 'firebase'
 Vue.config.productionTip = false
+
+import Toolbar from './components/AppToolbar.vue'
+Vue.component('app-toolbar', Toolbar)
 
 new Vue({
   router,

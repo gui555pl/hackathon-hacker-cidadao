@@ -7,6 +7,7 @@ import '@babel/polyfill'
 import FieryVue from 'fiery-vue'
 import jQuery from 'jquery'
 import firebase from 'firebase'
+import VuexPersistence from 'vuex-persist'
 global.$ = jQuery
 Vue.config.productionTip = false
 
@@ -14,6 +15,7 @@ import Toolbar from './components/AppToolbar.vue'
 Vue.component('app-toolbar', Toolbar)
 
 Vue.use(FieryVue)
+Vue.use(VuexPersistence)
 new Vue({
   router,
   store,

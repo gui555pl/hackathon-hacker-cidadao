@@ -113,7 +113,7 @@ export default {
             var self = this
             this.loading = true;
             setTimeout(function(){ 
-                console.log(self.$router.push('/home'))
+                console.log(self.$router.push('/ciodes'))
              }, 1000);
         }
     }

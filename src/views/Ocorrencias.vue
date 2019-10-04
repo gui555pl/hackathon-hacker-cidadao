@@ -52,6 +52,9 @@ export default {
             })
         }
     },
+    created(){
+        console.log(this.$store.state.tipoUsuario)
+    },
     methods: {
         goTo (ocorrencia) {
             this.$store.commit('setOcorrencia', ocorrencia)

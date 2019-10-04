@@ -1,17 +1,19 @@
 <template>
-    <div  ma-0 pa-0 style="width: 100%; height: 100%;">
-        <v-layout style=" widht:100%; height:100%;" column align-center>
-            <v-flex  style="display:flex; align-items:center; width:100%;height:50%; ">
-                <v-btn style="width:100%; height:50%; justify-content:center; ">
-                    Nova ocorrência
-                </v-btn>
-            </v-flex>
-            <v-flex  style="display:flex; align-items:start; width:100%; height:50%; ">
-                <v-btn style="width:100%; height:50%; justify-content:center; ">
-                    Acompanhar ocorrências
-                </v-btn>
-            </v-flex>
-        </v-layout>
+    <div style="width: 100%; height: 100%; background-color: #a1a1a1;">
+        <v-container fill-height>
+            <v-layout column>
+                <v-flex class="centerDiv" shrink>
+                    <v-layout column>
+                        <v-flex style="margin-bottom: 100px;">
+                            <v-btn class="buttonCiodes">Nova Ocorrência</v-btn>
+                        </v-flex>
+                        <v-flex>
+                            <v-btn class="buttonCiodes">Consultar/Alterar</v-btn>
+                        </v-flex>
+                    </v-layout>
+                </v-flex>
+            </v-layout>
+        </v-container>
     </div>
 </template>
 <script>
@@ -21,3 +23,18 @@ export default {
     }
 }
 </script>
+
+<style>
+    .buttonCiodes{
+        text-decoration: none;
+        min-width: 230px !important;
+        height: 80px !important;
+        font-size: 1em !important;
+    }
+    .centerDiv{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>

@@ -5,7 +5,9 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import '@babel/polyfill'
 import FieryVue from 'fiery-vue'
+import jQuery from 'jquery'
 import firebase from 'firebase'
+global.$ = jQuery
 Vue.config.productionTip = false
 
 Vue.use(FieryVue)

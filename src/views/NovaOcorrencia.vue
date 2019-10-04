@@ -84,9 +84,15 @@ export default {
             })
             this.logradouro = ''
             this.referencia = ''
-            this.tipo = {
+            this.tipo = {}
+            this.bptran = false
+            this.samu = false
+            this.cttu = false
+            this.bombeiro = false
+            this.prf = false
+            this.pm = false
+            this.$router.push('/ciodes')
 
-            }
         }
     }
 }

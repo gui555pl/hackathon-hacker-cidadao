@@ -1,12 +1,12 @@
 <template>
-  <v-app>
-    <v-app-bar app>
+  <v-app style="height: 100vh">
+    <!-- <v-app-bar app>
       <v-toolbar-title class="headline text-uppercase">
         
       </v-toolbar-title>
-    </v-app-bar>
+    </v-app-bar> -->
 
-    <v-content>
+    <v-content style="height: 100vh">
       <router-view/>
     </v-content>
   </v-app>

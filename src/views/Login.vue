@@ -1,94 +1,19 @@
 <template>
-    <span>
-        <v-container pa-0 style="max-width: 100%; margin-top: -64px; position: absolute; margin-left: auto; margin-right: auto; width: 100%;">
-            <v-layout mx-1 justify-center v-if="error">
+    <div class="backgroundLogin">
+        <v-container class="backgroundLogin-cell">
+            <!-- <v-layout justify-center  v-if="error">
                 <v-flex xs12 sm12 md6 lg6 >
-                    <app-alert @dismissed="onDismissed" :text="error.message" ></app-alert>
+                    <app-alert style="margin-top: 0%; margin-bottom: 5%;" @dismissed="onDismissed" :text="error.message" ></app-alert>
                 </v-flex>
-            </v-layout>
-        </v-container>
-        <v-container class="hidden-sm-and-up" style="height: 100vh; width: 100vw; margin-top: -64px;">
-            <div class="very-specific-design" id="very-specific-design" style="padding-top: 56px">
-                <v-layout justify-center>
-                    <v-flex xs4>
-                        <v-img contain></v-img>
-                    </v-flex>
-                </v-layout>
-                <!-- 
-                <v-layout>
-                    <v-flex>
-                        <h1 style="margin: 0; padding: 0; color: white; font-weight: 900; font-size: 1.8em; text-align: center;">América Proteção Veicular</h1>
-                    </v-flex>
-                </v-layout> -->
+            </v-layout> -->
 
-                <v-layout align-center justify-center>
-                    <v-flex xs12 sm12 md6 lg6 xl6>
-                        <v-card flat dark color="rgb(1, 11, 22, 0)">
-                            <v-card-text>
-                                <v-container>
-                                    <form @submit.prevent="onsignIn">
-                                        <v-layout row>
-                                            <v-flex xs12>
-                                                <v-text-field 
-                                                class="v-text-field-input"                                        name="email"
-                                                label="Email"
-                                                placeholder=" "
-                                                id="email"
-                                                v-model="email"
-                                                type="email"
-                                                required ></v-text-field>
-                                            </v-flex>
-                                        </v-layout>
-                                        <v-layout row>
-                                            <v-flex xs12>
-                                                <v-text-field 
-                                                name="password"
-                                                label="Senha"
-                                                placeholder=" "
-                                                id="password"
-                                                v-model="password"
-                                                type="password"
-                                                required ></v-text-field>
-                                            </v-flex>
-                                        </v-layout>
-                                        
-                                        <v-layout>
-                                            <v-btn color="#356884" dark type="submit" :disabled="loading" :loading="loading">
-                                                Entrar
-                                                <span slot="loader" class="custom-loader">
-                                                    <v-icon light>cached</v-icon>
-                                                </span>
-                                            </v-btn>
-                                            <v-btn flat to="/signup" :disabled="loading" :loading="loading">
-                                                Não sou registrado
-                                                <span slot="loader" class="custom-loader">
-                                                    <v-icon light>cached</v-icon>
-                                                </span>
-                                            </v-btn>
-                                        </v-layout>
-                                        <v-divider class="divisor"></v-divider>
-                                        <v-layout column>
-                                        <v-btn ed color="error" @click="google">
-                                            <v-icon color="white" left>fab fa-google</v-icon>
-                                            <span>Login com o Google</span>
-                                        </v-btn>
-                                        <v-btn rounded color="primary" @click="facebook">
-                                            <v-icon color="white" left>fab fa-facebook</v-icon>
-                                        <span>Login com o Facebook</span>
-                                        </v-btn>
-                                        </v-layout>
-                                    </form>
-                                </v-container>
-                            </v-card-text>
-                        </v-card>
-                    </v-flex>
-                </v-layout>
-            </div>
-        </v-container>
-        <v-container style="margin-top: -64px;" class="hidden-xs-only" mt-5>
             <v-layout justify-center>
-                <v-flex xs4>
-                    <v-img contain></v-img>
+                <v-flex xs12 align-self-center>
+                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/logo.png" alt="">
+                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/logo.png" alt="">
+                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/logo.png" alt="">
+                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/logo.png" alt="">
+                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/logo.png" alt="">
                 </v-flex>
             </v-layout>
             <!-- 
@@ -98,62 +23,68 @@
                 </v-flex>
             </v-layout> -->
 
-            <v-layout align-center justify-center>
-                <v-flex xs12 sm12 md6 lg6 xl6>
-                    <v-card text dark color="rgb(1, 11, 22, 0)">
-                        <v-card-text>
+            <v-layout mt-5 align-center justify-center>
+                <v-flex xs10 sm7 md5 lg4 xl3>
+                    <v-card elevation="0" style="max-width: 380px; margin-left: auto; margin-right: auto;" text dark color="rgb(1, 11, 22, 0)">
+                        <v-card-text style="padding: 0; margin: 0;">
                             <v-container>
-                                <form @submit.prevent="onsignIn">
-                                    <v-layout row>
-                                        <v-flex xs12>
-                                            <v-text-field 
-                                            class="v-text-field-input"                                        name="email"
-                                            label="Email"
-                                            placeholder=" "
-                                            id="email"
-                                            v-model="email"
-                                            type="email"
-                                            required ></v-text-field>
-                                        </v-flex>
-                                    </v-layout>
-                                    <v-layout row>
-                                        <v-flex xs12>
-                                            <v-text-field 
-                                            name="password"
-                                            label="Senha"
-                                            placeholder=" "
-                                            id="password"
-                                            v-model="password"
-                                            type="password"
-                                            required ></v-text-field>
-                                        </v-flex>
-                                    </v-layout>
+                                <form>
+                                    <v-flex xs12>
+                                        <v-text-field
+                                        light
+                                        hide-details
+                                        style="border-radius: 0px"
+                                        background-color="white"
+                                        color="#757575"
+                                        class="v-text-field-input my-4"                                        
+                                        name="email"
+                                        label="Email"
+                                        placeholder=""
+                                        id="email"
+                                        type="email"
+                                        required 
+                                        outlined
+                                        single-line></v-text-field>
+                                    </v-flex>
+                                    <v-flex xs12>
+                                        <v-text-field
+                                        light
+                                        hide-details
+                                        style="border-radius: 0px"
+                                        background-color="white"
+                                        color="#757575" 
+                                        class="v-text-field-input my-4"          
+                                        name="password"
+                                        label="Senha"
+                                        placeholder=""
+                                        id="password"
+                                        type="password"
+                                        required 
+                                        outlined
+                                        single-line></v-text-field>
+                                    </v-flex>
                                     
                                     <v-layout>
-                                        <v-btn color="#356884" dark type="submit" :disabled="loading" :loading="loading">
-                                            Entrar
-                                            <span slot="loader" class="custom-loader">
-                                                <v-icon light>cached</v-icon>
-                                            </span>
-                                        </v-btn>
-                                        <v-btn text to="/signup" :disabled="loading" :loading="loading">
-                                            Não sou registrado
-                                            <span slot="loader" class="custom-loader">
-                                                <v-icon light>cached</v-icon>
-                                            </span>
-                                        </v-btn>
+                                        <v-flex xs6 mr-1>
+                                            <v-btn @click="login()" rounded depressed outlined height="56" color="#424242" style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                                Entrar
+                                                <span slot="loader" class="custom-loader">
+                                                    <v-icon style="color: black">cached</v-icon>
+                                                </span>
+                                            </v-btn>
+                                        </v-flex>
+                                        <v-flex xs6 ml-1>
+                                            <v-btn rounded depressed outlined height="56" color="#424242"  style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                                Cadastrar
+                                                <span slot="loader" class="custom-loader">
+                                                    <v-icon style="color: black">cached</v-icon>
+                                                </span>
+                                            </v-btn>
+                                        </v-flex>
                                     </v-layout>
-                                    <v-divider class="divisor"></v-divider>
-                                    <v-layout column>
-                                    <v-btn rounded color="error" @click="google">
-                                        <v-icon color="white" left>fab fa-google</v-icon>
-                                        <span>Login com o Google</span>
-                                    </v-btn>
-                                    <v-btn rounded color="primary" @click="facebook">
-                                        <v-icon color="white" left>fab fa-facebook</v-icon>
-                                    <span>Login com o Facebook</span>
-                                    </v-btn>
-                                    </v-layout>
+                                    <v-flex xs12 ma-2 style="position: relative; text-align: center;">
+                                        <span style="cursor: pointer; color: #424242;">Esqueceu a senha?</span>
+                                    </v-flex>
                                 </form>
                             </v-container>
                         </v-card-text>
@@ -161,107 +92,81 @@
                 </v-flex>
             </v-layout>
         </v-container>
-    </span>
+    </div>
 </template>
 <script>
 export default {
+    name: 'login',
     data(){
         return{
-            email: '',
-            password: ''
+            loading: false,
         }
     },
     mounted(){
-        var $el = $("#very-specific-design");
-        var elHeight = $el.outerHeight();
-        var elWidth = $el.outerWidth();
-        var height, width, scale, origin;
-        height = $(window).height();
-        width = $(window).width(); 
-        console.log('height: '+height+'\n');
-        console.log('e a width: '+width);
-        scale = Math.min(
-            width / elWidth,    
-            height / elHeight
-        );
-        $el.css({
-            transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
-        });
-        $(window).resize(function(){
-            if(!this.verify){
-                height = $(window).height();
-                width = $(window).width(); 
-                console.log('height: '+height+'\n');
-                console.log('e a width: '+width);
-                scale = Math.min(
-                    width / elWidth,    
-                    height / elHeight
-                );
-                $el.css({
-                    transform: "translate(-50%, -50%) " + "scale(" + scale + ")"
-                });
-            }
-        });
     },
     computed: {
-        user (){
-           return this.$store.getters.user
-        },
-        error (){
-            return this.$store.getters.error
-        },
-         loading (){
-            return this.$store.getters.loading
-        },
-        verify (){
-            if (typeof window.cordova !== "undefined"){
-                return false //pc
-            }else{
-                return true //celular
-            }
-        },
     },
-      watch: {
-        user(value){
-            if (value !== null && value !== undefined){
-                this.$router.push('/home')
-            }
-        }
+    watch: {
     },
     methods: {
-        onsignIn () {
-            this.$store.dispatch('signUserIn', {email: this.email, password: this.password})
-        },
-        onDismissed () {
-            console.log('dismiss alert')
-            this.$store.dispatch('clearError')
-        },
-        google() {
-            this.$store.dispatch('signUserGoogle')
-        },
-        facebook() {
-            this.$store.dispatch('signUserFacebook')
+        login(){
+            var self = this
+            this.loading = true;
+            setTimeout(function(){ 
+                console.log(self.$router.push('/home'))
+             }, 1000);
         }
     }
 }
 </script>
 <style>
-    .very-specific-design{
-        width: 400px;
-        height: 600px;
-        position: relative;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        transform-origin: center center;
+    .backgroundLogin{
+        height: 100vh;
+        width: 100%; 
+        background-color: #8a8a8a; 
+        display: table;
+    }
+    .backgroundLogin-cell{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .logoImgXs{
+        height: 30vh;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .logoImgSm{
+        width: 25vw; 
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .logoImgMd{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .logoImgLg{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .logoImgXl{
+        width: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .custom-loader {
         animation: loader 1s infinite;
         display: flex;
     }
     .divisor{
-        margin-top: 20px;
-        margin-bottom:20px;
+        margin-top: 10px;
+        margin-bottom:10px;
     }
     .btnGoogle{
         width:276px;

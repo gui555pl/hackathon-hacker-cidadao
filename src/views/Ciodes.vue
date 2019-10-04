@@ -5,7 +5,7 @@
                 <v-flex class="centerDiv" shrink>
                     <v-layout column>
                         <v-flex style="margin-bottom: 100px;">
-                            <v-btn @click="$router.push('/ocorrencias')" class="buttonCiodes">Nova Ocorrência</v-btn>
+                            <v-btn @click="$router.push('/novaocorrencia')" class="buttonCiodes">Nova Ocorrência</v-btn>
                         </v-flex>
                         <v-flex>
                             <v-btn class="buttonCiodes">Consultar/Alterar</v-btn>

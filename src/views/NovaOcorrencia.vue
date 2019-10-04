@@ -1,44 +1,56 @@
 <template>
-    <v-container>
-        <v-layout column>
-            <v-flex>
-                 <v-text-field
-                    label="Logradouro"
-                    v-model="logradouro"
-                ></v-text-field>
-            </v-flex>
-            <v-flex>
-                <v-text-field
-                    label="Ponto de referência"
-                    v-model="referencia"
-                ></v-text-field>
-            </v-flex>
-            <v-flex>
-                <v-select
-                :items="tipos"
-                label="Tipo de ocorrência"
-                v-model="tipo"
-                ></v-select>
-            </v-flex>
-            <v-flex>
-                <v-checkbox v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
-                <v-checkbox v-model="cttu" label="CTTU" :value="true"></v-checkbox>
-                <v-checkbox v-model="samu" label="SAMU" :value="true"></v-checkbox>
-                <v-checkbox v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
-                <v-checkbox v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
-                <v-checkbox v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
-            </v-flex>
-            <v-flex>
-                <v-layout>
-                    <v-spacer></v-spacer>
-                    <v-btn @click="finish">
-                        Abrir ocorrência
-                    </v-btn>
+    <div style="height: 100%; background-color: #a1a1a1;">
+        <v-container style="padding-top: 64px; max-width: 500px;">
+            <v-layout mt-2>
+                <v-flex>
+                    <h3>Preencha os campos abaixo:</h3>
+                </v-flex>
+            </v-layout>
+            <v-layout column>
+                <v-flex>
+                    <v-text-field
+                        label="Logradouro"
+                        v-model="logradouro"
+                    ></v-text-field>
+                </v-flex>
+                <v-flex>
+                    <v-text-field
+                        label="Ponto de referência"
+                        v-model="referencia"
+                    ></v-text-field>
+                </v-flex>
+                <v-flex>
+                    <v-select
+                    :items="tipos"
+                    label="Tipo de ocorrência"
+                    v-model="tipo"
+                    ></v-select>
+                </v-flex>
+                <v-layout mt-2>
+                    <v-flex>
+                        <h3>Selecione o agente a ser chamado:</h3>
+                    </v-flex>
                 </v-layout>
-                
-            </v-flex>
-        </v-layout>
-    </v-container>
+                <v-flex>
+                    <v-checkbox v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
+                    <v-checkbox v-model="cttu" label="CTTU" :value="true"></v-checkbox>
+                    <v-checkbox v-model="samu" label="SAMU" :value="true"></v-checkbox>
+                    <v-checkbox v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
+                    <v-checkbox v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
+                    <v-checkbox v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
+                </v-flex>
+                <v-flex>
+                    <v-layout>
+                        <v-spacer></v-spacer>
+                        <v-btn @click="finish">
+                            Abrir ocorrência
+                        </v-btn>
+                    </v-layout>
+                    
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </div>
 </template>
 <script>
 import firebase from 'firebase'

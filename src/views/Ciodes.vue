@@ -19,7 +19,9 @@
 <script>
 export default {
     methods: {
-
+        novaOcorrencia(){
+            this.$router.push('/novaocorrencia')
+        }
     }
 }
 </script>

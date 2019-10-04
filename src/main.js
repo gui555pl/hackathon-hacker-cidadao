@@ -4,14 +4,16 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 import '@babel/polyfill'
+import FieryVue from 'fiery-vue'
 import jQuery from 'jquery'
-global.$ = jQuery
 import firebase from 'firebase'
+global.$ = jQuery
 Vue.config.productionTip = false
 
 import Toolbar from './components/AppToolbar.vue'
 Vue.component('app-toolbar', Toolbar)
 
+Vue.use(FieryVue)
 new Vue({
   router,
   store,

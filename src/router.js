@@ -4,6 +4,7 @@ import Ciodes from './views/Ciodes.vue'
 import NovaOcorrencia from './views/NovaOcorrencia.vue'
 import Login from './views/Login.vue'
 import Ocorrencias from './views/Ocorrencias'
+import Ocorrencia from './views/Ocorrencia'
 Vue.use(Router)
 
 export default new Router({
@@ -32,6 +33,11 @@ export default new Router({
       path: '/ocorrencias',
       name: 'ocorrencias',
       component: Ocorrencias
+    },
+    {
+      path: '/ocorrencia',
+      name: 'ocorrencia',
+      component: Ocorrencia
     }
 
   ]

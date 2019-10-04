@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout column>
-             <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px">
+             <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px" @click="goTo(ocorrencia)">
                      <v-card
                         elevation-5
                         style="border-radius: 3px"
@@ -45,9 +45,15 @@
 import firebase from 'firebase'
 export default {
     fiery: true,
-    data(){
-        return{
+    data() {
+        return {
             ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias'))
+        }
+    },
+    methods: {
+        goTo (ocorrencia) {
+            this.$store.commit('setOcorrencia', ocorrencia)
+            this.$router.push('/ocorrencia')
         }
     }
 }

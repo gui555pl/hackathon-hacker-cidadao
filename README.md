@@ -1,4 +1,4 @@
-# hackathon-conexoes-perifericas
+# SIAT
 
 ## Project setup
 ```

@@ -10,6 +10,9 @@ import firebase from 'firebase'
 global.$ = jQuery
 Vue.config.productionTip = false
 
+import Toolbar from './components/AppToolbar.vue'
+Vue.component('app-toolbar', Toolbar)
+
 Vue.use(FieryVue)
 new Vue({
   router,

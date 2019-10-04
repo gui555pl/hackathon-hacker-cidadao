@@ -6,7 +6,6 @@ import vuetify from './plugins/vuetify';
 import '@babel/polyfill'
 import jQuery from 'jquery'
 global.$ = jQuery
-
 import firebase from 'firebase'
 Vue.config.productionTip = false
 

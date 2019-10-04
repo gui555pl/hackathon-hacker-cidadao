@@ -10,7 +10,7 @@
                         <v-card-title style="background: #E0E0E0">
                             <v-layout>
                                 <v-flex style="text-align: left">
-                                    {{textos}}
+                            <h3 class="fonte" style="font-size:30px; "> {{textos}}</h3>   
                                 </v-flex>
                             </v-layout>
                         </v-card-title>
@@ -45,10 +45,17 @@
 export default {
     data(){
         return{
-            textos: '3123123213',
+            textos: '31231239213',
             data: '13.09.2019',
             hora: '14:59:51'
         }
     }
 }
 </script>
+<style>
+.fontes{
+        color: white;
+        font-size: 50px;
+       
+    }
+</style>

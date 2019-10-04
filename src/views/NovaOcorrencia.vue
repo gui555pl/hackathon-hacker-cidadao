@@ -26,6 +26,7 @@
                 <v-checkbox v-model="selected" label="CTTU" value="CTTU"></v-checkbox>
                 <v-checkbox v-model="selected" label="SAMU" value="SAMU"></v-checkbox>
                 <v-checkbox v-model="selected" label="Corpo de Bombeiros" value="Bombeiros"></v-checkbox>
+                 <v-checkbox v-model="selected" label="Polícia Militar" value="Polícia Militar"></v-checkbox>
             </v-flex>
             <v-flex>
                 <v-layout>

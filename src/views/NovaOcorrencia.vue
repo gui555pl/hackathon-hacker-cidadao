@@ -93,6 +93,7 @@ export default {
             samu: false,
             cttu: false,
             bombeiro: false,
+            erro: false,
             prf: false,
             pm: false,
             confirmDialog: false

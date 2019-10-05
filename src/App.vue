@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-    <app-toolbar class="app--toolbar">
+    <app-toolbar style="position: absolute;" class="app--toolbar">
     </app-toolbar>      
 
     <v-content>

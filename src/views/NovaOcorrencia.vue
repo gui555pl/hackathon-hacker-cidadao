@@ -126,7 +126,8 @@ export default {
                 arrived_bptran: false,
                 arrived_bombeiro: false,
                 arrived_prf: false,
-                arrived_pm: false
+                arrived_pm: false,
+                already_arrived: false
 
 
             })

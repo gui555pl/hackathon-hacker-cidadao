@@ -46,6 +46,9 @@ export default new Vuex.Store({
     },
     getCord (state) {
       return state.cord
+    },
+    getSelectedOcorrencia (state) {
+      return state.selectedOcorrencia
     }
   },
   plugins: [vuexLocal.plugin]

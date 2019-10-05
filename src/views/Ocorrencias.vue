@@ -89,7 +89,12 @@ export default {
     methods: {
         goTo (ocorrencia) {
             this.$store.commit('setOcorrencia', ocorrencia)
-            this.$router.push('/cheguei')
+            if(ocorrencia.already_arrived == false) {
+                this.$router.push('/cheguei')
+
+            }else{
+                this.$router.push('/ocorrencia')
+            }
         },
         orgaoPresente(ocorrencia){
             if(ocorrencia.arrived_bombeiro || ocorrencia.arrived_bptran || ocorrencia.arrived_cttu || ocorrencia.arrived_pm || ocorrencia.arrived_prf || ocorrencia.arrived_samu){

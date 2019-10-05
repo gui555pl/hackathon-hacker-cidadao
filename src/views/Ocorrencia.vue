@@ -19,7 +19,10 @@
                                     <v-flex class="fonteCard">
                                         Local : 
                                     </v-flex>
-                                    <v-flex class="fonteCard" style="text-align: right">
+                                    <v-flex v-if="ocorrencia.lat !== undefined"> 
+                                        <gps name="example"></gps>
+                                    </v-flex>
+                                    <v-flex class="fonteCard" style="text-align: right" v-else>
                                         {{ocorrencia.logradouro}}
                                     </v-flex>
                                 </v-layout>
@@ -91,15 +94,20 @@
 <script>
 import samu from '../components/Samu'
 import cttu from '../components/CTTU'
+import firebase from 'firebase'
+import gps from '../components/Gps'
 export default {
+    fiery: true,
     data() {
         return {
-            ocorrencia: this.$fiery(firebase.firestore().collection('ocorrencias').doc(this.id))
+            ocorrencia: {},
+            id: ''
         }
     },
       components: {
         samu: samu,
-        cttu: cttu
+        cttu: cttu,
+        gps: gps
     },
     methods: {
         orgaoPresente(ocorrencia){
@@ -110,13 +118,32 @@ export default {
             }
         }
     },
+    created (){
+            
+
+    },
+    mounted (){
+        let oc = this.$store.getters.getSelectedOcorrencia
+            var splits = oc['.uid'].split('/', 6)
+
+            var tempid = splits[4]
+            console.log(tempid)
+            let that = this
+            this.$fiery(firebase.firestore().collection('ocorrencias').doc(tempid), {
+                onSuccess: (todos) => {
+                    console.log(todos)
+                    that.ocorrencia = todos
+                    let cord = {
+                        lat: that.ocorrencia.lat,
+                        long: that.ocorrencia.long
+                    }
+                    that.$store.commit('setCord', cord)
+                }
+            })
+
+    },
     computed: {
-        id () {
-            let oc = this.$store.state.selectedOcorrencia
-            var splits = oc['.uid'].split('/', 4)
-            console.log(splits)
-            return splits
-        },
+
         tipo(){
             return this.$store.getters.getUser
         },

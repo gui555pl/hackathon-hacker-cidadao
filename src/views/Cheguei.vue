@@ -14,27 +14,53 @@
     </div>
 </template>
 <script>
-
+import firebase from 'firebase'
 export default {
-    
+    fiery: true,
     data(){
         return {
-            
+            ocorrencia: {}
         }
+    },
+    computed: {
+         user () {
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
+        }
+    },
+    created (){
+        // console.log(this.$store.getters.getSelectedOcorrencia)
+        // this.selected = this.$store.getters.getSelectedOcorrencia
+
+    },
+    mounted (){
+        let oc = this.$store.getters.getSelectedOcorrencia
+            var splits = oc['.uid'].split('/', 6)
+
+            var tempid = splits[4]
+            console.log(tempid)
+            let that = this
+            this.$fiery(firebase.firestore().collection('ocorrencias').doc(tempid), {
+                onSuccess: (todos) => {
+                    console.log(todos)
+                    that.ocorrencia = todos
+                }
+            })
     },
     methods: {
         onButtonClick(){
             $('#buttonCheguei').addClass('is-active')
-            this.getGeoRef()
+            var self = this
             setTimeout(function(){
+                self.getGeoRef()
                 $('#buttonCheguei').removeClass('is-active')
             } , 1650);
         },
-        getGeoRef () {
+        async getGeoRef () {
             let self = this
          
             if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition( function showPosition (position) {	
+                navigator.geolocation.getCurrentPosition( async function showPosition (position) {	
                     self.lat = position.coords.latitude;
                     self.lon = position.coords.longitude;
                     console.log(self.lat)
@@ -43,9 +69,84 @@ export default {
                         lat: self.lat,
                         long: self.lon
                     }
-                    self.$store.commit('setCord', cord)
+                    self.ocorrencia.lat = cord.lat
+                    self.ocorrencia.long = cord.long
+                    let oc = self.$store.getters.getSelectedOcorrencia
+                    var splits = oc['.uid'].split('/', 6)
+
+                    var tempid = splits[4]
+                    if (self.user == 'samu'){
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_samu: true
+
+                            
+                        })
+                    }
+                   if (self.user == 'cttu'){
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_cttu: true
+
+                            
+                        })
+                    }
+                    if (self.user == 'pm'){
+                        console.log('oi')
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_pm: true
+
+                            
+                        })
+                    }
+                   if (self.user == 'prf'){
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_prf: true
+
+                            
+                        })
+                    }
+                        if (self.user == 'bptran'){
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_bptran: true
+
+                            
+                        })
+                    }
+                   if (self.user == 'bombeiro'){
+                        await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                            lat: self.ocorrencia.lat,
+                            long: self.ocorrencia.long,
+                            already_arrived: true,
+                            arrived_bombeiro: true
+
+                            
+                        })
+                    }
+
+                        
 
                 })
+           
+            //8sja5otIAzJEWhn2tkNn
+
+            
+            this.$router.push('/ocorrencia')
+            
+            
             }else{
                 this.error = "Geolocation is not supported."; 
                 

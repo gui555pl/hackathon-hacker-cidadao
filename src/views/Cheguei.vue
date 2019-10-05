@@ -14,7 +14,7 @@
         <v-container style="width: 100%; position: absolute; top: 0; height: 64px;" ma-0 px-1 py-0 fill-height>
             <v-layout ma-0 pa-0 fill-height>
                 <v-flex @click="$router.push('/ocorrencias')" pl-4 align-self-center style="text-align: left;">
-                    <v-icon large color="white">fas fa-chevron-left</v-icon>
+                    <v-icon large color="black">fas fa-chevron-left</v-icon>
                 </v-flex>
             </v-layout>
         </v-container>

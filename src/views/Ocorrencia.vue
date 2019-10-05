@@ -1,17 +1,17 @@
 <template>
     <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
-            <v-container v-if="!ocorrencia.arrived_samu" ma-0 pa-0>
+            <!-- <v-container v-if="!ocorrencia.arrived_samu" style="transition: 0.5s" ma-0 pa-0>
                 <v-layout my-4>
                     <v-flex xs12>
-                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px;">Cheguei!</v-btn>
+                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
                     </v-flex>
                 </v-layout>
-            </v-container>
-            <v-container v-if="!ocorrencia.arrived_cttu" ma-0 pa-0>
+            </v-container> -->
+            <v-container v-if="(user == 'samu') && ocorrencia.arrived_cttu" style="transition: 0.5s" ma-0 pa-0>
                 <v-layout my-4>
                     <v-flex xs12>
-                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px;">Cheguei!</v-btn>
+                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -99,7 +99,7 @@
                             <!-- INFO CTTU -->
                             <!-- <template v-if="ocorrencia.cttu">
                                 <v-divider></v-divider>
-                                <h2 style="padding-left: 16px; padding-top: 16px;">CTTU:</h2>
+                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">CTTU</h2>
                                 <v-card-text style="padding-top: 16px;">
                                     <v-layout>
                                         <v-flex class="fonteCard">
@@ -144,7 +144,7 @@
                             INFO SAMU
                             <template v-if="ocorrencia.samu">
                                 <v-divider></v-divider>
-                                <h2 style="padding-left: 16px; padding-top: 16px;">SAMU:</h2>
+                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">SAMU</h2>
                                 <v-card-text style="padding-top: 16px;">
                                     <v-layout>
                                         <v-flex class="fonteCard">
@@ -223,7 +223,7 @@ export default {
                 return false;
             }
         },
-        async trueToFirebase(arrived){
+        async trueToFirebase(){
             let oc = this.$store.getters.getSelectedOcorrencia
             var splits = oc['.uid'].split('/', 6)
 

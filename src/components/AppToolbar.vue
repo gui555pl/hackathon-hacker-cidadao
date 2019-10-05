@@ -9,9 +9,9 @@
                     <img class="middle" style="height: 50px;"  src="../../imagens/ativo.png"/>
                 </v-flex>
                 <v-flex pr-4 align-self-center style="text-align: right;">
-                    <v-btn text rounded @click="$router.push('/')" style="padding: 0">
+                    <v-flex @click="$router.push('/')" style="padding: 0; margin: 0;">
                         <v-icon color="#0D0106">fas fa-sign-out-alt</v-icon>
-                    </v-btn>
+                    </v-flex>
                 </v-flex>
             </v-layout>
         </v-container>

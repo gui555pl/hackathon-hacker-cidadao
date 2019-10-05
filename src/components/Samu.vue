@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 100%; height: 100%; background-color: #a1a1a1;">
+    <div style="width: 100%; height: 100%;">
         <v-container  style="width: 100%; height:100%;">
             <v-layout column>
                 <h3 class="text-xs-center"> Qtd. de vítimas </h3>

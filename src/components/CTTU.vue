@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 100%; height: 100%; background-color: #a1a1a1;">
+    <div style="width: 100%; height: 100%;">
         <v-container  style="width: 100%; height:100%;">
             <v-layout column>
                 <h3 class="text-xs-center"> Tipo de colisão </h3>
@@ -20,7 +20,7 @@
                             >
                             </v-text-field>
                         </v-flex>
-                       <v-btn @click="salvar()">SALVAR</v-btn>
+                       <v-btn style="background: #3C78D8; color: #fff;" @click="salvar()">SALVAR</v-btn>
 
             </v-layout>
         </v-container>

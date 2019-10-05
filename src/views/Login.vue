@@ -9,11 +9,12 @@
 
             <v-layout justify-center>
                 <v-flex xs12 align-self-center>
-                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/logo.png" alt="">
-                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/logo.png" alt="">
-                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/logo.png" alt="">
-                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/logo.png" alt="">
-                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/logo.png" alt="">
+
+                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/ativo.png" alt="">
+                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/ativo.png" alt="">
+                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/ativo.png" alt="">
+                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/ativo.png" alt="">
+                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/ativo.png" alt="">
                 </v-flex>
             </v-layout>
             <!-- 
@@ -65,7 +66,7 @@
                                     
                                     <v-layout>
                                         <v-flex xs6 mr-1>
-                                            <v-btn type="submit" rounded depressed outlined height="56" color="#424242" style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                            <v-btn type="submit" rounded depressed outlined height="56" color="#fff" style="background-color: #3C78D8; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Entrar
                                                 <span slot="loader" class="custom-loader">
                                                     <v-icon style="color: black">cached</v-icon>
@@ -73,7 +74,7 @@
                                             </v-btn>
                                         </v-flex>
                                         <v-flex xs6 ml-1>
-                                            <v-btn rounded depressed outlined height="56" color="#424242"  style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                            <v-btn rounded depressed outlined height="56" color="#fff"  style="background-color: #0D0106; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Cadastrar
                                                 <span slot="loader" class="custom-loader">
                                                     <v-icon style="color: black">cached</v-icon>
@@ -150,7 +151,7 @@ export default {
     .backgroundLogin{
         height: 100vh;
         width: 100%; 
-        background-color: #8a8a8a; 
+        background-color: #FBFBFF; 
         display: table;
     }
     .backgroundLogin-cell{

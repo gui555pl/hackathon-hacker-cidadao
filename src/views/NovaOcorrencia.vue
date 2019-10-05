@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100%; background-color: #a1a1a1; display: flex; align-items: center;">
+    <div style="height: 100%; background-color: #FBFBFF; display: flex; align-items: center;">
         <v-container style="padding-top: 64px; max-width: 500px;">
             <v-layout  column>
                 <v-layout>

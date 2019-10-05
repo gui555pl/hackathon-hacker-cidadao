@@ -1,11 +1,11 @@
 <template>
-    <div style="width:100%; height:100%; background-color: #a1a1a1; padding-top: 64px;">
+    <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
             <v-container ma-0 pa-0>
                 <v-layout mt-4 column>
                     <v-flex xs12 sm6 md6 lg4 xl4 style="padding: 0px">
                         <v-card style="background-color: white;">    
-                            <v-card-title>
+                            <v-card-title style="background-color: #E0E0E0;">
                                 <v-layout>
                                     <v-flex style="text-align: left">
                                         Ocorrência: {{ocorrencia.number}}

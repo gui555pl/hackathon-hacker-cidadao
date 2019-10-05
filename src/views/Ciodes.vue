@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 100%; height: 100%; background-color: #a1a1a1;">
+    <div style="width: 100%; height: 100%; background-color: #FBFBFF;">
         <v-container fill-height>
             <v-layout column>
                 <v-flex class="centerDiv" shrink>

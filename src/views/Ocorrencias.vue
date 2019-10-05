@@ -1,5 +1,5 @@
 <template>
-    <div style="height: 100%; background-color: #a1a1a1;">
+    <div style="height: 100%; background-color: #FBFBFF;">
         <v-container style="padding-top: 64px;">
             <v-layout mt-4 column>
                 <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)">

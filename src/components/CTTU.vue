@@ -1,11 +1,11 @@
 <template>
-    <div style="width: 100%; height: 100%; background-color: #a1a1a1;">
+    <div style="width: 100%; height: 100%;">
         <v-container  style="width: 100%; height:100%;">
-            <v-layout column>
+            <v-layout  column>
                 <h3 class="text-xs-center"> Tipo de colisão </h3>
                         <v-flex>
                             <v-select
-                                v-model="vitimas"
+                                v-model="vitimas1"
                                 :items="items1"
                                 label="Selecione o tipo de colisão"
                                 >
@@ -20,7 +20,16 @@
                             >
                             </v-text-field>
                         </v-flex>
-                       <v-btn @click="salvar()">SALVAR</v-btn>
+                         <h3 class="text-xs-center"> Qtd. de vítimas </h3>
+                        <v-flex>
+                            <v-select
+                                v-model="vitimas"
+                                :items="items4"
+                                label="Selecione a quantidade de vítimas"
+                                >
+                            </v-select>
+                        </v-flex>
+                        <v-btn style="background: #3C78D8; color: #fff;" @click="salvar()">SALVAR</v-btn>
 
             </v-layout>
         </v-container>
@@ -30,7 +39,9 @@
 export default {
     data(){
         return{
+            vitimas1:'',
             vitimas:'',
+            items4:['1','2','3','4','5 ou mais'],
             items1:['Frontal','Com ciclista','Choque com veículo parado','Choque com objeto fixo'],
             lesao: '',
             items2:['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],
@@ -50,6 +61,7 @@ export default {
     methods:{
         salvar(){
             this.vitimas='',
+            this.vitimas1='',
             this.items1=['1','2','3','4','5 ou mais'],
             this.lesao= '',
             this.items2=['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],

@@ -1,6 +1,6 @@
 <template>
-    <div class="backgroundLogin">
-        <v-container class="backgroundLogin-cell">
+    <div style="background-color:white;">
+        <v-container>
             <!-- <v-layout justify-center  v-if="error">
                 <v-flex xs12 sm12 md6 lg6 >
                     <app-alert style="margin-top: 0%; margin-bottom: 5%;" @dismissed="onDismissed" :text="error.message" ></app-alert>
@@ -69,7 +69,7 @@
                                             <v-btn type="submit" rounded depressed outlined height="56" color="#fff" style="background-color: #3C78D8; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Entrar
                                                 <span slot="loader" class="custom-loader">
-                                                    <v-icon style="color: black">cached</v-icon>
+                                                    <v-icon style="color: white">cached</v-icon>
                                                 </span>
                                             </v-btn>
                                         </v-flex>
@@ -77,7 +77,7 @@
                                             <v-btn rounded depressed outlined height="56" color="#fff"  style="background-color: #0D0106; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Cadastrar
                                                 <span slot="loader" class="custom-loader">
-                                                    <v-icon style="color: black">cached</v-icon>
+                                                    <v-icon style="color: white">cached</v-icon>
                                                 </span>
                                             </v-btn>
                                         </v-flex>

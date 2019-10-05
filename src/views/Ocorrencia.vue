@@ -1,10 +1,17 @@
 <template>
     <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
-            <v-container ma-0 pa-0>
+            <!-- <v-container v-if="!ocorrencia.arrived_samu" style="transition: 0.5s" ma-0 pa-0>
                 <v-layout my-4>
                     <v-flex xs12>
-                        <v-btn style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;" >Cheguei!</v-btn>
+                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
+                    </v-flex>
+                </v-layout>
+            </v-container> -->
+            <v-container v-if="(user == 'samu') && ocorrencia.arrived_cttu" style="transition: 0.5s" ma-0 pa-0>
+                <v-layout my-4>
+                    <v-flex xs12>
+                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -90,7 +97,7 @@
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                             <!-- INFO CTTU -->
-                            <template> <!--  v-if="cttu" -->
+                            <!-- <template v-if="ocorrencia.cttu">
                                 <v-divider></v-divider>
                                 <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">CTTU</h2>
                                 <v-card-text style="padding-top: 16px;">
@@ -134,8 +141,8 @@
                                     </v-layout>  
                                 </v-card-text>
                             </template>
-                            <!-- INFO SAMU -->
-                            <template> <!--  v-if="samu" -->
+                            INFO SAMU
+                            <template v-if="ocorrencia.samu">
                                 <v-divider></v-divider>
                                 <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">SAMU</h2>
                                 <v-card-text style="padding-top: 16px;">
@@ -178,10 +185,10 @@
                                         </v-flex>
                                     </v-layout>  
                                 </v-card-text>
-                            </template>
+                            </template> -->
                         </v-card>
-                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"> </samu>
-                            <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"> </cttu>
+                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"></samu>
+                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"></cttu>
                     </v-flex>
                 </v-layout>
             </v-container>                
@@ -214,6 +221,24 @@ export default {
                 return true;
             }else{
                 return false;
+            }
+        },
+        async trueToFirebase(){
+            let oc = this.$store.getters.getSelectedOcorrencia
+            var splits = oc['.uid'].split('/', 6)
+
+            var tempid = splits[4]
+            if (this.user == 'samu'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    already_arrived: true,
+                    arrived_samu: true   
+                })
+            }
+            if (this.user == 'cttu'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    already_arrived: true,
+                    arrived_cttu: true   
+                })
             }
         }
     },

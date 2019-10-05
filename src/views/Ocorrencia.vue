@@ -103,7 +103,7 @@ export default {
         }
     },
     created () {
-        console.log('this.$store.getters.getUser')
+        
     }
 }
 </script>

@@ -94,9 +94,7 @@ import cttu from '../components/CTTU'
 export default {
     data() {
         return {
-            ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias'), {
-                query: q => q.where( this.$store.getters.getUser,'==', true).orderBy('creation_timestamp', 'desc'),
-            })
+            ocorrencia: this.$fiery(firebase.firestore().collection('ocorrencias').doc(this.id))
         }
     },
       components: {
@@ -113,8 +111,11 @@ export default {
         }
     },
     computed: {
-        ocorrencia () {
-            return this.$store.state.selectedOcorrencia
+        id () {
+            let oc = this.$store.state.selectedOcorrencia
+            var splits = oc['.uid'].split('/', 4)
+            console.log(splits)
+            return splits
         },
         tipo(){
             return this.$store.getters.getUser

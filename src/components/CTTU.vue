@@ -24,7 +24,7 @@
                         <v-flex>
                             <v-select
                                 v-model="vitimas"
-                                :items="items1"
+                                :items="items4"
                                 label="Selecione a quantidade de vítimas"
                                 >
                             </v-select>
@@ -41,7 +41,7 @@ export default {
         return{
             vitimas1:'',
             vitimas:'',
-            items1:['1','2','3','4','5 ou mais'],
+            items4:['1','2','3','4','5 ou mais'],
             items1:['Frontal','Com ciclista','Choque com veículo parado','Choque com objeto fixo'],
             lesao: '',
             items2:['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],

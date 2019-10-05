@@ -85,9 +85,7 @@
                                         <span style="cursor: pointer; color: #424242;">Esqueceu a senha?</span>
                                     </v-flex>
                                     <!-- <v-btn @click="getGeoLocation()">kk</v-btn> -->
-                                    <gps
-                                    name="example"
-                                    ></gps>
+                                   
                                 </form>
                             </v-container>
                         </v-card-text>

@@ -2,7 +2,14 @@
     <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
             <v-container ma-0 pa-0>
-                <v-layout mt-4 column>
+                <v-layout my-4>
+                    <v-flex xs12>
+                        <v-btn style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px;">Cheguei!</v-btn>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+            <v-container ma-0 pa-0>
+                <v-layout column>
                     <v-flex xs12 sm6 md6 lg4 xl4 style="padding: 0px">
                         <v-card style="background-color: white;">    
                             <v-card-title style="background-color: #E0E0E0;">
@@ -80,7 +87,7 @@
                             </v-card-text>
                             <v-card-text v-if="!orgaoPresente(ocorrencia)" style="padding-bottom: 0px;">
                                 <div class="fonteCard">Agentes no local:</div>
-                                <div style="padding-top: 16px;">Ainda não há órgãos no local</div>
+                                <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                             <!-- INFO CTTU -->
                             <template> <!--  v-if="cttu" -->

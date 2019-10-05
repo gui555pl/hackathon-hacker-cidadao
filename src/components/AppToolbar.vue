@@ -6,7 +6,7 @@
                     <v-icon color="#0D0106">fas fa-bars</v-icon>
                 </v-flex>
                 <v-flex align-self-center>
-                    <img class="middle" style="height: 50px;"  src="../../imagens/ativo.png"/>
+                    <img class="middle" style="height: 50px;"  src="../../imagens/logo-novo.png"/>
                 </v-flex>
                 <v-flex pr-4 align-self-center style="text-align: right;">
                     <v-btn text rounded @click="$router.push('/')" style="padding: 0">

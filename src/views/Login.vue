@@ -10,11 +10,11 @@
             <v-layout justify-center>
                 <v-flex xs12 align-self-center>
 
-                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/ativo.png" alt="">
-                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/ativo.png" alt="">
-                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/ativo.png" alt="">
-                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/ativo.png" alt="">
-                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/ativo.png" alt="">
+                    <img class="logoImgXs hidden-sm-and-up" src="../../imagens/logo-novo.png" alt="">
+                    <img class="logoImgSm hidden-xs-only hidden-md-and-up" src="../../imagens/logo-novo.png" alt="">
+                    <img class="logoImgMd hidden-sm-and-down hidden-lg-and-up" src="../../imagens/logo-novo.png" alt="">
+                    <img class="logoImgLg hidden-md-and-down hidden-xl-only" src="../../imagens/logo-novo.png" alt="">
+                    <img class="logoImgXl hidden-lg-and-down" src="../../imagens/logo-novo.png" alt="">
                 </v-flex>
             </v-layout>
             <!-- 

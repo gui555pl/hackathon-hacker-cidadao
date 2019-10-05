@@ -11,7 +11,6 @@
                             <v-btn class="buttonCiodes">Consultar/Alterar</v-btn>
                         </v-flex>
                     </v-layout>
-
                 </v-flex>
             </v-layout>
         </v-container>
@@ -29,6 +28,27 @@ export default {
     methods: {
         novaOcorrencia(){
             this.$router.push('/novaocorrencia')
+        },
+        getGeoRef () {
+            let self = this
+         
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition( function showPosition (position) {	
+                    self.lat = position.coords.latitude;
+                    self.lon = position.coords.longitude;
+                    console.log(self.lat)
+                    console.log(self.lon)
+                    let cord = {
+                        lat: self.lat,
+                        long: self.lon
+                    }
+                    self.$store.commit('setCord', cord)
+
+                })
+            }else{
+                this.error = "Geolocation is not supported."; 
+                
+            }
         }
     
     }

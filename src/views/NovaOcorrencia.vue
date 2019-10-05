@@ -1,12 +1,12 @@
 <template>
-    <div style="height: 100%; background-color: #a1a1a1;">
+    <div style="height: 100%; background-color: #a1a1a1; display: flex; align-items: center;">
         <v-container style="padding-top: 64px; max-width: 500px;">
-            <v-layout mt-2>
-                <v-flex>
-                    <h3>Preencha os campos abaixo:</h3>
-                </v-flex>
-            </v-layout>
-            <v-layout column>
+            <v-layout  column>
+                <v-layout>
+                    <v-flex>
+                        <h3>Preencha os campos abaixo:</h3>
+                    </v-flex>
+                </v-layout>
                 <v-flex>
                     <v-text-field
                         label="Logradouro"
@@ -32,14 +32,14 @@
                     </v-flex>
                 </v-layout>
                 <v-flex>
-                    <v-checkbox v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
-                    <v-checkbox v-model="cttu" label="CTTU" :value="true"></v-checkbox>
-                    <v-checkbox v-model="samu" label="SAMU" :value="true"></v-checkbox>
-                    <v-checkbox v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
-                    <v-checkbox v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
-                    <v-checkbox v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="cttu" label="CTTU" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="samu" label="SAMU" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
+                    <v-checkbox hide-details v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
                 </v-flex>
-                <v-flex>
+                <v-flex mt-2>
                     <v-layout>
                         <v-spacer></v-spacer>
                         <v-btn @click="finish">

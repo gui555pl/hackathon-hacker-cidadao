@@ -2,10 +2,10 @@
     <div style="height: 100%; background-color: #a1a1a1;">
         <v-container style="padding-top: 64px;">
             <v-layout mt-4 column>
-                <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px" @click="goTo(ocorrencia)">
+                <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)">
                     <v-card
                         elevation-5
-                        style="border-radius: 3px;"
+                        style="border-radius: 10px;"
                         class="mx-auto fonteCard"
                     >
                         <v-card-title style="background: #E0E0E0">
@@ -28,14 +28,14 @@
                         <v-card-text style="padding-top: 16px;">
                             <v-layout>
                                 <v-flex class="fonteCard">
-                                    Ref: 
+                                    Ponto de Referência: 
                                 </v-flex>
                                 <v-flex class="fonteCard" style="text-align: right">
                                     {{ocorrencia.ponto_referência}}
                                 </v-flex>
                             </v-layout>
                         </v-card-text>
-                        <v-card-text style="padding-top: 16px;" class="fonteCard">
+                        <v-card-text v-if="orgaoPresente(ocorrencia)" style="padding-top: 16px;" class="fonteCard">
                             Agentes no local:
                             <v-chip-group
                                 multiple
@@ -61,7 +61,10 @@
                                 </v-chip>
                             </v-chip-group>
                         </v-card-text>
-                        <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0;  font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
+                        <v-card-text style="padding: 10px" v-if="!orgaoPresente(ocorrencia)">
+
+                        </v-card-text>
+                        <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0; font-weight: 500; font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
                         <v-card-actions style="padding-right: 0; padding-top: 3px;"></v-card-actions>
                     </v-card>
                 </v-flex>
@@ -86,7 +89,14 @@ export default {
     methods: {
         goTo (ocorrencia) {
             this.$store.commit('setOcorrencia', ocorrencia)
-            this.$router.push('/ocorrencia')
+            this.$router.push('/cheguei')
+        },
+        orgaoPresente(ocorrencia){
+            if(ocorrencia.arrived_bombeiro || ocorrencia.arrived_bptran || ocorrencia.arrived_cttu || ocorrencia.arrived_pm || ocorrencia.arrived_prf || ocorrencia.arrived_samu){
+                return true;
+            }else{
+                return false;
+            }
         }
     },
     computed: {
@@ -109,6 +119,8 @@ export default {
         color: #021b39;
     }
     .fonteCard{
+        font-size: 16px !important;
+        font-weight: 500;
         color: rgba(0, 0, 0, 1) !important;
     }
 </style>

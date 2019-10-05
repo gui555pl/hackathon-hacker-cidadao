@@ -5,6 +5,7 @@ import NovaOcorrencia from './views/NovaOcorrencia.vue'
 import Login from './views/Login.vue'
 import Ocorrencias from './views/Ocorrencias'
 import Ocorrencia from './views/Ocorrencia'
+import Cheguei from './views/Cheguei.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -49,6 +50,14 @@ export default new Router({
       component: Ocorrencia,
       meta:{
         show: true            
+      }
+    },
+    {
+      path: '/cheguei',
+      name: 'cheguei',
+      component: Cheguei,
+      meta:{
+        show: false            
       }
     }
 

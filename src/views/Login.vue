@@ -28,24 +28,22 @@
                     <v-card elevation="0" style="max-width: 380px; margin-left: auto; margin-right: auto;" text dark color="rgb(1, 11, 22, 0)">
                         <v-card-text style="padding: 0; margin: 0;">
                             <v-container>
-                                <form>
+                                <form @submit.prevent="login()">
                                     <v-flex xs12>
-                                        <v-text-field
-                                        v-model="cod"
-                                        light
-                                        hide-details
-                                        style="border-radius: 0px"
-                                        background-color="white"
-                                        color="#757575"
-                                        class="v-text-field-input my-4"                                        
-                                        name="email"
-                                        label="Email"
-                                        placeholder=""
-                                        id="email"
-                                        type="email"
-                                        required 
-                                        outlined
-                                        single-line></v-text-field>
+                                        <v-autocomplete
+                                            label="Nome do órgão"
+                                            :items="orgaos"
+                                            v-model="cod"
+                                            style="border-radius: 0px"
+                                            background-color="white"
+                                            color="#757575"
+                                            class="v-text-field-input"    
+                                            outlined
+                                            required
+                                            hide-details
+                                            light
+                                            solo
+                                        ></v-autocomplete>
                                     </v-flex>
                                     <v-flex xs12>
                                         <v-text-field
@@ -67,7 +65,7 @@
                                     
                                     <v-layout>
                                         <v-flex xs6 mr-1>
-                                            <v-btn @click="login()" rounded depressed outlined height="56" color="#424242" style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
+                                            <v-btn type="submit" rounded depressed outlined height="56" color="#424242" style="background-color: white; border: 1px solid #C2C2C2; width: 100%;" dark :loading="loading">
                                                 Entrar
                                                 <span slot="loader" class="custom-loader">
                                                     <v-icon style="color: black">cached</v-icon>
@@ -101,7 +99,8 @@ export default {
     data(){
         return{
             loading: false,
-            cod: ''
+            cod: '',
+            orgaos: ['ciodes', 'bombeiros', 'bptran', 'cttu', 'pm', 'prf', 'samu']
         }
     },
     mounted(){
@@ -115,7 +114,7 @@ export default {
         login(){
             this.$store.commit('setType', this.cod)
             var self = this
-            this.loading = true;
+            this.loading = true
             setTimeout(function(){ 
                 if (self.cod !== 'ciodes'){
                     self.$router.push('/ocorrencias')

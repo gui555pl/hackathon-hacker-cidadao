@@ -44,6 +44,7 @@ export default {
     }
     .centerDiv{
         position: absolute;
+        margin-top: 50px;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);

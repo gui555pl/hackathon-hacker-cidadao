@@ -86,6 +86,10 @@
                                     <v-flex xs12 ma-2 style="position: relative; text-align: center;">
                                         <span style="cursor: pointer; color: #424242;">Esqueceu a senha?</span>
                                     </v-flex>
+                                    <!-- <v-btn @click="getGeoLocation()">kk</v-btn> -->
+                                    <gps
+                                    name="example"
+                                    ></gps>
                                 </form>
                             </v-container>
                         </v-card-text>
@@ -96,18 +100,49 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
+import gps from '../components/Gps'
 export default {
+    components:{
+        gps:gps
+    },
     name: 'login',
     data(){
         return{
             loading: false,
-            cod: ''
+            cod: '',
+            lat:'',
+            lon:''
         }
     },
     mounted(){
         //this.$store.commit('reset')
     },
     computed: {
+    },
+    beforeCreate(){
+        let self = this
+         
+            if(navigator.geolocation){
+                navigator.geolocation.getCurrentPosition( function showPosition (position) {	
+                    self.lat = position.coords.latitude;
+                    self.lon = position.coords.longitude;
+                    console.log(self.lat)
+                    console.log(self.lon)
+                    let cord = {
+                        lat: self.lat,
+                        long: self.lon
+                    }
+                    self.$store.commit('setCord', cord)
+
+                })
+            }else{
+                this.error = "Geolocation is not supported."; 
+                
+            }
+        
+
+
     },
     watch: {
     },
@@ -125,7 +160,11 @@ export default {
                 
              }, 1000);
         }
-    }
+       
+      
+	}
+        
+    
 }
 </script>
 <style>

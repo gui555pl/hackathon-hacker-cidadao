@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
+    "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "fiery-vue": "^0.10.1",
     "firebase": "^7.1.0",
@@ -16,6 +17,7 @@
     "pug-plain-loader": "^1.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
+    "vue2-google-maps": "^0.10.7",
     "vuetify": "^2.0.0",
     "vuex": "^3.0.1",
     "vuex-persist": "^2.1.0",

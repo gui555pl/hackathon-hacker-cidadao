@@ -10,7 +10,8 @@ function initialState () {
   return {
     type: '',
     selectedOcorrencia: '',
-    tipoUsuario: null
+    tipoUsuario: null,
+    cord: {}
   }
   
 
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     setType (state, payload) {
       state.tipoUsuario = payload
       console.log(state.tipoUsuario)
+    },
+    setCord(state, payload){
+      state.cord = payload
     },
     setOcorrencia (state, payload) {
       state.selectedOcorrencia = payload
@@ -39,6 +43,9 @@ export default new Vuex.Store({
   getters: {
     getUser (state) {
       return state.tipoUsuario
+    },
+    getCord (state) {
+      return state.cord
     }
   },
   plugins: [vuexLocal.plugin]

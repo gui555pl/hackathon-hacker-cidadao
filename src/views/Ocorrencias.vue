@@ -61,7 +61,10 @@
                                 </v-chip>
                             </v-chip-group>
                         </v-card-text>
-                        <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0;  font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
+                        <v-card-text style="padding: 10px" v-if="!orgaoPresente(ocorrencia)">
+
+                        </v-card-text>
+                        <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0; font-weight: 500; font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
                         <v-card-actions style="padding-right: 0; padding-top: 3px;"></v-card-actions>
                     </v-card>
                 </v-flex>
@@ -116,6 +119,8 @@ export default {
         color: #021b39;
     }
     .fonteCard{
+        font-size: 16px !important;
+        font-weight: 500;
         color: rgba(0, 0, 0, 1) !important;
     }
 </style>

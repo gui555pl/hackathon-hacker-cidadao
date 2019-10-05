@@ -117,7 +117,12 @@ export default {
             var self = this
             this.loading = true;
             setTimeout(function(){ 
-                console.log(self.$router.push('/ciodes'))
+                if (self.cod !== 'ciodes'){
+                    self.$router.push('/ocorrencias')
+                }else {
+                    console.log(self.$router.push('/ciodes'))
+                }
+                
              }, 1000);
         }
     }

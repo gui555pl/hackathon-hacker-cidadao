@@ -4,10 +4,17 @@
             <v-layout column>
                 <v-flex class="centerDiv" shrink>
                     <div>
-                        <button id="buttonCheguei" @click="onButtonClick()" class='btn btn--shockwave'> <!--  is-active -->
+                        <button id="buttonCheguei" @click="onButtonClick()" class='btn btn--shockwave elevation-10'> <!--  is-active -->
                             Cheguei
                         </button>
                     </div>
+                </v-flex>
+            </v-layout>
+        </v-container>
+        <v-container style="width: 100%; position: absolute; top: 0; height: 64px;" ma-0 px-1 py-0 fill-height>
+            <v-layout ma-0 pa-0 fill-height>
+                <v-flex @click="$router.push('/ocorrencias')" pl-4 align-self-center style="text-align: left;">
+                    <v-icon large color="white">fas fa-chevron-left</v-icon>
                 </v-flex>
             </v-layout>
         </v-container>

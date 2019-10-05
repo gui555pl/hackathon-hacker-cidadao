@@ -87,7 +87,7 @@
                             </v-card-text>
                             <v-card-text v-if="!orgaoPresente(ocorrencia)" style="padding-bottom: 0px;">
                                 <div class="fonteCard">Agentes no local:</div>
-                                <div style="padding-top: 16px;">Ainda não há órgãos no local</div>
+                                <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                             <!-- INFO CTTU -->
                             <template> <!--  v-if="cttu" -->

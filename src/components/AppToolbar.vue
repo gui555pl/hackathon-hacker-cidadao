@@ -8,6 +8,12 @@
                 <v-flex align-self-center>
                     <img class="middle" style="height: 50px;"  src="../../imagens/ativo.png"/>
                 </v-flex>
+                <v-flex v-if="tipo == 'samu'" align-self-center>
+                    <img class="middle" style="height: 50px;"  src="../../imagens/samu png.png"/>
+                </v-flex>
+                <v-flex v-if="tipo == 'cttu'" align-self-center>
+                    <img class="middle" style="height: 50px;"  src="../../imagens/organizacao-cttu.png"/>
+                </v-flex>
                 <v-flex pr-4 align-self-center style="text-align: right;">
                     <v-flex @click="$router.push('/')" style="padding: 0; margin: 0;">
                         <v-icon color="#0D0106">fas fa-sign-out-alt</v-icon>
@@ -42,12 +48,19 @@
             return{
             }
         },
+        created(){
+            console.log('a rota é ' + this.$route.meta.show)
+        },
         methods: {
             showRoute(){
                 return this.$route.meta.show
             },
         },
         computed: {
+            
+        tipo(){
+            return this.$store.getters.getUser
+        }
         },
         
     }

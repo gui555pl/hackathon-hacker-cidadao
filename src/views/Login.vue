@@ -1,6 +1,6 @@
 <template>
-    <div class="backgroundLogin">
-        <v-container class="backgroundLogin-cell">
+    <div style="background-color:white;">
+        <v-container>
             <!-- <v-layout justify-center  v-if="error">
                 <v-flex xs12 sm12 md6 lg6 >
                     <app-alert style="margin-top: 0%; margin-bottom: 5%;" @dismissed="onDismissed" :text="error.message" ></app-alert>

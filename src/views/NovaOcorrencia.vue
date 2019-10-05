@@ -127,7 +127,12 @@ export default {
                 arrived_bombeiro: false,
                 arrived_prf: false,
                 arrived_pm: false,
-                already_arrived: false
+                already_arrived: false,
+                vitimas: '',
+                lesao:'',
+                localLesao:'',
+                atendimento:'',
+                ua:''
 
 
             })

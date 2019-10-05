@@ -4,7 +4,7 @@
             <v-container ma-0 pa-0>
                 <v-layout my-4>
                     <v-flex xs12>
-                        <v-btn style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px;">Cheguei!</v-btn>
+                        <v-btn style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;" >Cheguei!</v-btn>
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -92,7 +92,7 @@
                             <!-- INFO CTTU -->
                             <template> <!--  v-if="cttu" -->
                                 <v-divider></v-divider>
-                                <h2 style="padding-left: 16px; padding-top: 16px;">CTTU:</h2>
+                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">CTTU</h2>
                                 <v-card-text style="padding-top: 16px;">
                                     <v-layout>
                                         <v-flex class="fonteCard">
@@ -137,7 +137,7 @@
                             <!-- INFO SAMU -->
                             <template> <!--  v-if="samu" -->
                                 <v-divider></v-divider>
-                                <h2 style="padding-left: 16px; padding-top: 16px;">SAMU:</h2>
+                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">SAMU</h2>
                                 <v-card-text style="padding-top: 16px;">
                                     <v-layout>
                                         <v-flex class="fonteCard">

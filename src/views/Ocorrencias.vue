@@ -35,7 +35,7 @@
                                 </v-flex>
                             </v-layout>
                         </v-card-text>
-                        <v-card-text style="padding-top: 16px;" class="fonteCard">
+                        <v-card-text v-if="orgaoPresente(ocorrencia)" style="padding-top: 16px;" class="fonteCard">
                             Agentes no local:
                             <v-chip-group
                                 multiple
@@ -87,6 +87,13 @@ export default {
         goTo (ocorrencia) {
             this.$store.commit('setOcorrencia', ocorrencia)
             this.$router.push('/ocorrencia')
+        },
+        orgaoPresente(ocorrencia){
+            if(ocorrencia.arrived_bombeiro || ocorrencia.arrived_bptran || ocorrencia.arrived_cttu || ocorrencia.arrived_pm || ocorrencia.arrived_prf || ocorrencia.arrived_samu){
+                return true;
+            }else{
+                return false;
+            }
         }
     },
     computed: {

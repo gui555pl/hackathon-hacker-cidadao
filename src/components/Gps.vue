@@ -31,6 +31,7 @@ export default {
     const map = new google.maps.Map(element, options);
     this.markerCoordinates.forEach((coord) => {
     const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+    console.log(position)
     const marker = new google.maps.Marker({ 
         position,
         map

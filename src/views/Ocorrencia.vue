@@ -15,14 +15,19 @@
                                 <v-divider></v-divider>
                                 <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0;  font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
                             <v-card-text style="padding-top: 26px;">
-                                <v-layout>
+                                <v-layout column v-if="ocorrencia.lat !== undefined">
+                                    <v-flex xs12 class="fonteCard">
+                                        Local : 
+                                    </v-flex>
+                                    <v-flex xs12> 
+                                        <gps name="example"></gps>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout v-else>
                                     <v-flex class="fonteCard">
                                         Local : 
                                     </v-flex>
-                                    <v-flex v-if="ocorrencia.lat !== undefined"> 
-                                        <gps name="example"></gps>
-                                    </v-flex>
-                                    <v-flex class="fonteCard" style="text-align: right" v-else>
+                                    <v-flex class="fonteCard" style="text-align: right">
                                         {{ocorrencia.logradouro}}
                                     </v-flex>
                                 </v-layout>
@@ -77,16 +82,103 @@
                                 <div class="fonteCard">Agentes no local:</div>
                                 <div style="padding-top: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
-                            <v-card-actions style="padding-right: 0; padding-top: 3px;"></v-card-actions>
-                            <v-divider></v-divider>
-                            <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"> </samu>
-                            <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"> </cttu>
+                            <!-- INFO CTTU -->
+                            <template> <!--  v-if="cttu" -->
+                                <v-divider></v-divider>
+                                <h2 style="padding-left: 16px; padding-top: 16px;">CTTU:</h2>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Tipo de colisão: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Placa do carro: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Quantidade de vítimas: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Local de atendimento: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                            </template>
+                            <!-- INFO SAMU -->
+                            <template> <!--  v-if="samu" -->
+                                <v-divider></v-divider>
+                                <h2 style="padding-left: 16px; padding-top: 16px;">SAMU:</h2>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Quantidade de vítimas: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Tipo de lesão: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Local de lesão: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                                <v-card-text style="padding-top: 16px;">
+                                    <v-layout>
+                                        <v-flex class="fonteCard">
+                                            Local de atendimento: 
+                                        </v-flex>
+                                        <v-flex class="fonteCard" style="text-align: right">
+                                            {{ocorrencia.ponto_referência}}
+                                        </v-flex>
+                                    </v-layout>  
+                                </v-card-text>
+                            </template>
                         </v-card>
+                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"> </samu>
+                            <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"> </cttu>
                     </v-flex>
                 </v-layout>
             </v-container>                
         </v-card-text>
-
     </div>
 
 </template>

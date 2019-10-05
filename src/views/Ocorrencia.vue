@@ -1,7 +1,11 @@
 <template>
-    <!-- <samu></samu> -->
-    <samu v-if="tipo == 'samu' "> </samu>
+    <div>
+        <samu v-if="tipo == 'samu' "> </samu>
+        <CTTU v-if="tipo == 'CTTU' "> </CTTU>
+    </div>
+
 </template>
+
 <script>
 import Samu from '../components/Samu'
 import CTTU from '../components/CTTU'

@@ -1,68 +1,82 @@
 <template>
-    <v-container>
-        <v-layout column>
-            <v-flex>
-                 <v-text-field
-                    label="Logradouro"
-                    v-model="logradouro"
-                ></v-text-field>
-            </v-flex>
-            <v-flex>
-                <v-text-field
-                    label="Ponto de referência"
-                    v-model="referencia"
-                ></v-text-field>
-            </v-flex>
-            <v-flex>
-                <v-select
-                :items="tipos"
-                label="Tipo de ocorrência"
-                v-model="tipo"
-                ></v-select>
-            </v-flex>
-            <v-flex>
-                <v-checkbox v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
-                <v-checkbox v-model="cttu" label="CTTU" :value="true"></v-checkbox>
-                <v-checkbox v-model="samu" label="SAMU" :value="true"></v-checkbox>
-                <v-checkbox v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
-                <v-checkbox v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
-                <v-checkbox v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
-            </v-flex>
-            <v-flex>
-                <v-layout>
-                    <v-spacer></v-spacer>
-                    <v-btn @click="finish">
-                        Abrir ocorrência
-                    </v-btn>
+    <div style="height: 100%; background-color: #a1a1a1;">
+        <v-container style="padding-top: 64px; max-width: 500px;">
+            <v-layout mt-2>
+                <v-flex>
+                    <h3>Preencha os campos abaixo:</h3>
+                </v-flex>
+            </v-layout>
+            <v-layout column>
+                <v-flex>
+                    <v-text-field
+                        label="Logradouro"
+                        v-model="logradouro"
+                    ></v-text-field>
+                </v-flex>
+                <v-flex>
+                    <v-text-field
+                        label="Ponto de referência"
+                        v-model="referencia"
+                    ></v-text-field>
+                </v-flex>
+                <v-flex>
+                    <v-select
+                    :items="tipos"
+                    label="Tipo de ocorrência"
+                    v-model="tipo"
+                    ></v-select>
+                </v-flex>
+                <v-layout mt-2>
+                    <v-flex>
+                        <h3>Selecione o agente a ser chamado:</h3>
+                    </v-flex>
                 </v-layout>
-                
-            </v-flex>
-        </v-layout>
-        <v-layout>
-            <v-dialog
-            v-model="confirmDialog"
-            >
-                <v-card>
-                    <v-card-title class="headline">Ocorrência criada com sucesso!</v-card-title>
+                <v-flex>
+                    <v-checkbox v-model="bptran" label="BPTRAN" :value="true"></v-checkbox>
+                    <v-checkbox v-model="cttu" label="CTTU" :value="true"></v-checkbox>
+                    <v-checkbox v-model="samu" label="SAMU" :value="true"></v-checkbox>
+                    <v-checkbox v-model="bombeiro" label="Corpo de Bombeiros" :value="true"></v-checkbox>
+                    <v-checkbox v-model="pm" label="Polícia Militar" :value="true"></v-checkbox>
+                    <v-checkbox v-model="prf" label="Polícia Rodoviária Federal" :value="true"></v-checkbox>
+                </v-flex>
+                <v-flex>
+                    <v-layout>
+                        <v-spacer></v-spacer>
+                        <v-btn @click="finish">
+                            Abrir ocorrência
+                        </v-btn>
+                    </v-layout>
+                    
+                </v-flex>
+            </v-layout>
+            <v-layout>
+                <v-dialog
+                v-model="confirmDialog"
+                >
+                    <v-card>
+                        <v-card-text style="font-weight: 500; font-size: 1.5em; color: black; padding-top: 16px; padding-bottom: 10px;">Ocorrência criada com sucesso!</v-card-text>
 
-                    <v-card-text>
-                    Ocorrência confirmada! Os agentes mais próximos dos órgãos selecionados serão direcionados ao local em instantes.
-                    </v-card-text>
 
-                    <v-card-actions>
-                    <div class="flex-grow-1"></div>
-                    <v-btn
-                        color="green darken-1"
-                        text
-                        @click="confirmDialog = false"
-                    >
-                        Voltar à página principal
-                    </v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-dialog>
-        </v-layout>
-    </v-container>
+                        <v-card-text>
+                        Ocorrência confirmada! Os agentes mais próximos dos órgãos selecionados serão direcionados ao local em instantes.
+                        </v-card-text>
+
+                        <v-card-actions>
+                        <div class="flex-grow-1"></div>
+                        <v-btn
+                            color="green darken-1"
+                            text
+                            @click="goHome()"
+                        >
+                            Voltar à página principal
+                        </v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+            </v-layout>
+        </v-container>
+    </div>
+    
 </template>
 <script>
 import firebase from 'firebase'
@@ -127,6 +141,9 @@ export default {
             this.confirmDialog = true
 
         },
+        goHome(){
+            this.$router.push('/ciodes')
+        }
        
     }
 }

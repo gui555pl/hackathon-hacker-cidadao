@@ -1,20 +1,20 @@
 <template>
-    <div style="width:100%; height:100%; ">
-        <v-card-text style="background-color: #a1a1a1;">
-            <v-container >
+    <div style="width:100%; height:100%; background-color: #a1a1a1; padding-top: 64px;">
+        <v-card-text style="padding-top: 0px;">
+            <v-container ma-0 pa-0>
                 <v-layout mt-4 column>
-                    <v-flex xs12 sm6 md6 lg4 xl4style="padding: 5px">
-                      
-                            <v-card-title style="background-color: #a1a1a1;">
+                    <v-flex xs12 sm6 md6 lg4 xl4 style="padding: 0px">
+                        <v-card style="background-color: white;">    
+                            <v-card-title>
                                 <v-layout>
                                     <v-flex style="text-align: left">
-                                        {{ocorrencia.number}}
+                                        Ocorrência: {{ocorrencia.number}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-title>
                                 <v-divider></v-divider>
                                 <v-card-text style="text-align: right; padding-left: 0; padding-top: 0; padding-bottom: 0;  font-style: italic; ">Criado em {{ocorrencia.creation_date}} às {{ocorrencia.creation_time}}</v-card-text>
-                            <v-card-text style="padding-top: 16px;">
+                            <v-card-text style="padding-top: 26px;">
                                 <v-layout>
                                     <v-flex class="fonteCard">
                                         Local : 
@@ -27,14 +27,24 @@
                             <v-card-text style="padding-top: 16px;">
                                 <v-layout>
                                     <v-flex class="fonteCard">
-                                        Ref: 
+                                        Referência: 
                                     </v-flex>
                                     <v-flex class="fonteCard" style="text-align: right">
                                         {{ocorrencia.ponto_referência}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>
-                            <v-card-text style="padding-top: 16px;" class="fonteCard">
+                            <v-card-text style="padding-top: 16px;">
+                                <v-layout>
+                                    <v-flex class="fonteCard">
+                                        Tipo de Ocorrência:
+                                    </v-flex>
+                                    <v-flex class="fonteCard" style="text-align: right">
+                                        {{ocorrencia.tipo_ocorrencia}}
+                                    </v-flex>
+                                </v-layout>
+                            </v-card-text>
+                            <v-card-text v-if="orgaoPresente(ocorrencia)" style="padding-top: 10px;" class="fonteCard">
                                 Agentes no local:
                                 <v-chip-group
                                     multiple
@@ -60,11 +70,15 @@
                                     </v-chip>
                                 </v-chip-group>
                             </v-card-text>
+                            <v-card-text v-if="!orgaoPresente(ocorrencia)" style="padding-bottom: 0px;">
+                                <div class="fonteCard">Agentes no local:</div>
+                                <div style="padding-top: 16px;">Ainda não há órgãos no local</div>
+                            </v-card-text>
                             <v-card-actions style="padding-right: 0; padding-top: 3px;"></v-card-actions>
                             <v-divider></v-divider>
-                            <samu v-if="tipo == 'samu' "> </samu>
-                            <CTTU v-if="tipo == 'cttu' "> </CTTU>
-                  
+                            <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"> </samu>
+                            <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"> </cttu>
+                        </v-card>
                     </v-flex>
                 </v-layout>
             </v-container>                
@@ -75,8 +89,8 @@
 </template>
 
 <script>
-import Samu from '../components/Samu'
-import CTTU from '../components/CTTU'
+import samu from '../components/Samu'
+import cttu from '../components/CTTU'
 export default {
     data() {
         return {
@@ -86,21 +100,29 @@ export default {
         }
     },
       components: {
-        Samu: Samu,
-        CTTU: CTTU
+        samu: samu,
+        cttu: cttu
+    },
+    methods: {
+        orgaoPresente(ocorrencia){
+            if(ocorrencia.arrived_bombeiro || ocorrencia.arrived_bptran || ocorrencia.arrived_cttu || ocorrencia.arrived_pm || ocorrencia.arrived_prf || ocorrencia.arrived_samu){
+                return true;
+            }else{
+                return false;
+            }
+        }
     },
     computed: {
         ocorrencia () {
             return this.$store.state.selectedOcorrencia
-
         },
         tipo(){
             return this.$store.getters.getUser
         },
-         user () {
+        user () {
             console.log(this.$store.getters.getUser)
             return this.$store.getters.getUser
-        }
+        },
     },
     created () {
         

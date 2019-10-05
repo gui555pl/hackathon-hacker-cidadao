@@ -2,10 +2,10 @@
     <div style="height: 100%; background-color: #a1a1a1;">
         <v-container style="padding-top: 64px;">
             <v-layout mt-4 column>
-                <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px" @click="goTo(ocorrencia)">
+                <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)">
                     <v-card
                         elevation-5
-                        style="border-radius: 3px;"
+                        style="border-radius: 10px;"
                         class="mx-auto fonteCard"
                     >
                         <v-card-title style="background: #E0E0E0">
@@ -28,7 +28,7 @@
                         <v-card-text style="padding-top: 16px;">
                             <v-layout>
                                 <v-flex class="fonteCard">
-                                    Ref: 
+                                    Ponto de Referência: 
                                 </v-flex>
                                 <v-flex class="fonteCard" style="text-align: right">
                                     {{ocorrencia.ponto_referência}}
@@ -89,7 +89,7 @@ export default {
     methods: {
         goTo (ocorrencia) {
             this.$store.commit('setOcorrencia', ocorrencia)
-            this.$router.push('/ocorrencia')
+            this.$router.push('/cheguei')
         },
         orgaoPresente(ocorrencia){
             if(ocorrencia.arrived_bombeiro || ocorrencia.arrived_bptran || ocorrencia.arrived_cttu || ocorrencia.arrived_pm || ocorrencia.arrived_prf || ocorrencia.arrived_samu){

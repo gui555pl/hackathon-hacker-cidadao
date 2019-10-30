@@ -40,7 +40,6 @@ import firebase from 'firebase'
 export default {
     fiery: true,
     data(){
-        
         return{
             vitimas:'',
             items1:['1','2','3','4','5 ou mais'],
@@ -50,8 +49,7 @@ export default {
             items3:['Cranio','Face','Pescoço','Dorso','Torax','Abdômem'],
             items4:['UPA - Unidade de Pronto Atendimento - Tipo III Torrões','PA Nova Descoberta – Solano Trindade','UPA - Caxangá','UPA - Tipo III Lagoa Encantada','Unidade de Pronto Atendimento Maria Esther Souto Carvalho','Upinha 24h Dr Moacyr André Gomes'],
             atendimento: '',
-            ocorrencia:{},
-           
+            ocorrencia:{}
     
         }
     },
@@ -92,9 +90,9 @@ export default {
             // this.$router.push('/ocorrencias')
             this.ocorrencia.lesao= this.lesao
             this.ocorrencia.localLesao=this.localLesao,
-            this.ocorrencia.atendimento=this.atendimento,
+            this.ocorrencia.atendimento=this.atendimento
             this.ocorrencia.status='andamento',
-            this.$fiery.update(this.ocorrencia),
+            this.$fiery.update(this.ocorrencia)
             this.$router.push('/ocorrencias')
         
     }

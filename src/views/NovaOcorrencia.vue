@@ -13,6 +13,7 @@
                         v-model="logradouro"
                     ></v-text-field>
                 </v-flex>
+         
                 <v-flex>
                     <v-text-field
                         label="Ponto de referência"
@@ -24,6 +25,20 @@
                     :items="tipos"
                     label="Tipo de ocorrência"
                     v-model="tipo"
+                    ></v-select>
+                </v-flex>
+                <v-flex>
+                    <v-select
+                    :items="transito"
+                    label="Parou o trânsito?"
+                    v-model="transitos"
+                    ></v-select>
+                </v-flex>
+                <v-flex>
+                    <v-select
+                    :items="qtdVitima"
+                    label="Quantidade de vítimas"
+                    v-model="qtdVit"
                     ></v-select>
                 </v-flex>
                 <v-layout mt-2>
@@ -89,6 +104,8 @@ export default {
             tipo: {},
             tipos:['Colisão', 'Atropelamento', 'Capotamento'],
             ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias')),
+            transitos: {},
+            transito: ['Sim', 'Não'],
             bptran: false,
             samu: false,
             cttu: false,
@@ -96,8 +113,10 @@ export default {
             erro: false,
             prf: false,
             pm: false,
-            confirmDialog: false
-
+            confirmDialog: false,
+            status: '',
+             qtdVit: {},
+            qtdVitima: ['Nenhuma vítima','1','2','3','4','5','6','7','8','9','10 ou mais']
         }
     },
     methods: {
@@ -132,10 +151,13 @@ export default {
                 lesao:'',
                 localLesao:'',
                 atendimento:'',
-                ua:''
+                ua:'',
+                status: this.status='aberto',
+                qtdVitimas: this.qtdVitima
 
 
             })
+            this.qtdVitima= {}
             this.logradouro = ''
             this.referencia = ''
             this.tipo = {}

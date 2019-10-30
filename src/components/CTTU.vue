@@ -37,6 +37,7 @@
 </template>
 <script>
 export default {
+    fiery: true,
     data(){
         return{
             vitimas1:'',
@@ -60,13 +61,20 @@ export default {
     },
     methods:{
         salvar(){
-            this.vitimas='',
-            this.vitimas1='',
-            this.items1=['1','2','3','4','5 ou mais'],
-            this.lesao= '',
-            this.items2=['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],
-            this.localLesao='',
-            this.items3=['Cranio','Face','Pescoço','Dorso','Torax','Abdômem']
+              
+            // this.vitimas='',
+            // this.items1=['1','2','3','4','5 ou mais'],
+            // this.lesao= '',
+            // this.items2=['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],
+            // this.localLesao='',
+            // this.items3=['Cranio','Face','Pescoço','Dorso','Torax','Abdômem']
+            // this.$router.push('/ocorrencias')
+            this.ocorrencia.lesao= this.lesao
+            this.ocorrencia.localLesao=this.localLesao,
+            this.ocorrencia.atendimento=this.atendimento,
+            this.ocorrencia.status='andamento',
+            this.$fiery.update(this.ocorrencia),
+            this.$router.push('/ocorrencias')
         }
     }
      

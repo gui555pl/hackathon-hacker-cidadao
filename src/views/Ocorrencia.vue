@@ -59,6 +59,16 @@
                             <v-card-text style="padding-top: 16px;">
                                 <v-layout>
                                     <v-flex class="fonteCard">
+                                        Quantidade de vítimas:
+                                    </v-flex>
+                                    <v-flex class="fonteCard" style="text-align: right">
+                                        {{ocorrencia.qtdVitima}}
+                                    </v-flex>
+                                </v-layout>
+                            </v-card-text>
+                            <v-card-text style="padding-top: 16px;">
+                                <v-layout>
+                                    <v-flex class="fonteCard">
                                         Tipo de Ocorrência:
                                     </v-flex>
                                     <v-flex class="fonteCard" style="text-align: right">
@@ -189,6 +199,9 @@
                         </v-card>
                         <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"></samu>
                         <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"></cttu>
+                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true"></pm>
+                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true"></bptran>
+                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true"></prf>
                     </v-flex>
                 </v-layout>
             </v-container>                
@@ -199,9 +212,13 @@
 
 <script>
 import samu from '../components/Samu'
+import pm from '../components/PM'
 import cttu from '../components/CTTU'
 import firebase from 'firebase'
+import bptran from '../components/BPTran'
+import bombeiro from '../components/Bombeiro.vue'
 import gps from '../components/Gps'
+import prf from '../components/prf'
 export default {
     fiery: true,
     data() {
@@ -212,7 +229,11 @@ export default {
     },
       components: {
         samu: samu,
+        pm: pm,
+        bptran: bptran,
+        bombeiro:bombeiro,
         cttu: cttu,
+        prf: prf,
         gps: gps
     },
     methods: {
@@ -241,6 +262,7 @@ export default {
                 })
             }
         }
+     
     },
     created (){
             

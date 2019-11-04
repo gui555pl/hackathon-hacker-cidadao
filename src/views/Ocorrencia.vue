@@ -1,13 +1,6 @@
 <template>
     <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
-            <!-- <v-container v-if="!ocorrencia.arrived_samu" style="transition: 0.5s" ma-0 pa-0>
-                <v-layout my-4>
-                    <v-flex xs12>
-                        <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
-                    </v-flex>
-                </v-layout>
-            </v-container> -->
             <v-container v-if="(user == 'samu') && ocorrencia.arrived_cttu" style="transition: 0.5s" ma-0 pa-0>
                 <v-layout my-4>
                     <v-flex xs12>
@@ -106,102 +99,15 @@
                                 <div class="fonteCard">Agentes no local:</div>
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
-                            <!-- INFO CTTU -->
-                            <!-- <template v-if="ocorrencia.cttu">
-                                <v-divider></v-divider>
-                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">CTTU</h2>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Tipo de colisão: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Placa do carro: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Quantidade de vítimas: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Local de atendimento: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                            </template>
-                            INFO SAMU
-                            <template v-if="ocorrencia.samu">
-                                <v-divider></v-divider>
-                                <h2 style="padding: 16px;  background-color: rgb(224, 224, 224);">SAMU</h2>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Quantidade de vítimas: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Tipo de lesão: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Local de lesão: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                                <v-card-text style="padding-top: 16px;">
-                                    <v-layout>
-                                        <v-flex class="fonteCard">
-                                            Local de atendimento: 
-                                        </v-flex>
-                                        <v-flex class="fonteCard" style="text-align: right">
-                                            {{ocorrencia.ponto_referência}}
-                                        </v-flex>
-                                    </v-layout>  
-                                </v-card-text>
-                            </template> -->
                         </v-card>
-                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true"></samu>
-                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true"></cttu>
-                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true"></pm>
-                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true"></bptran>
-                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true"></prf>
+                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true& ocorrencia.status=='aberto'"></samu>
+                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true& ocorrencia.status=='aberto'"></cttu>
+                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true& ocorrencia.status=='aberto'"></pm>
+                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true& ocorrencia.status=='aberto'"></bptran>
+                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true& ocorrencia.status=='aberto'"></prf>
+                        <v-flex xs12 md6 mx-2 align-center>
+                            <v-btn v-if="ocorrencia.status=='andamento'" color="primary"  @click="statusFinalizado">Atendimento finalizado</v-btn>
+                        </v-flex>
                     </v-flex>
                 </v-layout>
             </v-container>                
@@ -261,6 +167,11 @@ export default {
                     arrived_cttu: true   
                 })
             }
+        },
+        statusFinalizado(){
+            this.ocorrencia.status='finalizado',
+            this.$fiery.update(this.ocorrencia),
+            this.$router.push('/ocorrencias')
         }
      
     },

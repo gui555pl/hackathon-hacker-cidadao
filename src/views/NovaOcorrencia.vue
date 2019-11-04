@@ -152,7 +152,7 @@ export default {
                 localLesao:'',
                 atendimento:'',
                 ua:'',
-                status: this.status='aberto',
+                status:'aberto',
                 qtdVitimas: this.qtdVitima
 
 

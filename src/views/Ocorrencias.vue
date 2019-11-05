@@ -45,7 +45,7 @@
                                     Quantidade de vítimas: 
                                 </v-flex>
                                 <v-flex class="fonteCard" style="text-align: right">
-                                    {{ocorrencia.qtdVitima}}
+                                    {{ocorrencia.qtdVitimas}}
                                 </v-flex>
                             </v-layout>
                         </v-card-text>
@@ -125,7 +125,7 @@
                                         Quantidade de vítimas: 
                                     </v-flex>
                                     <v-flex class="fonteCard" style="text-align: right">
-                                        {{ocorrencia.qtdVitima}}
+                                        {{ocorrencia.qtdVitimas}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>
@@ -165,7 +165,7 @@
                     <h3>Eventos encerrados</h3>
                     <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                         <v-card
-                            v-if="ocorrencia.status=='finalizado'"
+                            v-if="ocorrencia.status_bombeiro=='finalizado'|| ocorrencia.status_bptran=='finalizado'|| ocorrencia.status_cttu=='finalizado'||ocorrencia.status_pm=='finalizado'||ocorrencia.status_prf=='finalizado'"
                             elevation-5
                             style="border-radius: 10px;"
                             class="mx-auto fonteCard"
@@ -204,7 +204,7 @@
                                         Quantidade de vítimas: 
                                     </v-flex>
                                     <v-flex class="fonteCard" style="text-align: right">
-                                        {{ocorrencia.qtdVitima}}
+                                        {{ocorrencia.qtdVitimas}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>

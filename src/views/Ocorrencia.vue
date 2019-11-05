@@ -55,7 +55,7 @@
                                         Quantidade de vítimas:
                                     </v-flex>
                                     <v-flex class="fonteCard" style="text-align: right">
-                                        {{ocorrencia.qtdVitima}}
+                                        {{ocorrencia.qtdVitimas}}
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>
@@ -106,7 +106,7 @@
                         <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
                         <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
                         <v-flex xs12 md6 mx-2 align-center>
-                            <v-btn v-if="ocorrencia.status=='andamento'" color="primary"  @click="statusFinalizado">Atendimento finalizado</v-btn>
+                            <v-btn v-if="ocorrencia.status_bombeiro=='andamento'|| ocorrencia.status_bptran=='andamento'|| ocorrencia.status_cttu=='andamento'||ocorrencia.status_pm=='andamento'||ocorrencia.status_prf=='andamento'" color="primary"  @click="statusFinalizado">Atendimento finalizado</v-btn>
                         </v-flex>
                     </v-flex>
                 </v-layout>

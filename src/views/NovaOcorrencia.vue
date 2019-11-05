@@ -36,7 +36,7 @@
                 </v-flex>
                 <v-flex>
                     <v-select
-                    :items="qtdVitima"
+                    :items="qtdVitimas"
                     label="Quantidade de vítimas"
                     v-model="qtdVit"
                     ></v-select>
@@ -115,8 +115,8 @@ export default {
             pm: false,
             confirmDialog: false,
             status: '',
-             qtdVit: {},
-            qtdVitima: ['Nenhuma vítima','1','2','3','4','5','6','7','8','9','10 ou mais']
+            qtdVit: {},
+            qtdVitimas: ['Nenhuma vítima','1','2','3','4','5','6','7','8','9','10 ou mais']
         }
     },
     methods: {
@@ -158,14 +158,14 @@ export default {
                 status_bptran:'aberto',
                 status_pm:'aberto',
                 status_bombeiro:'aberto',
-                qtdVitimas: this.qtdVitima
+                qtdVitimas: this.qtdVit
 
 
             })
-            this.qtdVitima= {}
             this.logradouro = ''
             this.referencia = ''
             this.tipo = {}
+            this.qtdVit={}
             this.bptran = false
             this.samu = false
             this.cttu = false

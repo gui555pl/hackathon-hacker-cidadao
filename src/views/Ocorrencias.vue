@@ -6,7 +6,7 @@
                 <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                   
                     <v-card
-                        v-if="ocorrencia.status=='aberto'"
+                        v-if="ocorrencia.status_bombeiro=='aberto'|| ocorrencia.status_bptran=='aberto'|| ocorrencia.status_cttu=='aberto'|| ocorrencia.status_pm=='aberto'||ocorrencia.status_samu=='aberto'"
                         elevation-5
                         style="border-radius: 10px;"
                         class="mx-auto fonteCard"
@@ -86,7 +86,7 @@
                 <h3>Eventos em andamento</h3>
                     <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                         <v-card
-                            v-if="ocorrencia.status=='andamento'"
+                            v-if="ocorrencia.status_bombeiro=='andamento'|| ocorrencia.status_bptran=='andamento'|| ocorrencia.status_cttu=='andamento'|| ocorrencia.status_pm=='andamento'||ocorrencia.status_samu=='andamento'"
                             elevation-5
                             style="border-radius: 10px;"
                             class="mx-auto fonteCard"

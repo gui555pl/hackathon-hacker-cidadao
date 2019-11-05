@@ -72,7 +72,7 @@ export default {
             this.ocorrencia.lesao= this.lesao
             this.ocorrencia.localLesao=this.localLesao,
             this.ocorrencia.atendimento=this.atendimento,
-            this.ocorrencia.status='andamento',
+            this.ocorrencia.status.cttu='andamento',
             this.$fiery.update(this.ocorrencia),
             this.$router.push('/ocorrencias')
         }

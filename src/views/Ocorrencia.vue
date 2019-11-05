@@ -100,11 +100,11 @@
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                         </v-card>
-                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true& ocorrencia.status=='aberto'"></samu>
-                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true& ocorrencia.status=='aberto'"></cttu>
-                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true& ocorrencia.status=='aberto'"></pm>
-                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true& ocorrencia.status=='aberto'"></bptran>
-                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true& ocorrencia.status=='aberto'"></prf>
+                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true& ocorrencia.status_samu=='aberto'"></samu>
+                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
+                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
+                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
+                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
                         <v-flex xs12 md6 mx-2 align-center>
                             <v-btn v-if="ocorrencia.status=='andamento'" color="primary"  @click="statusFinalizado">Atendimento finalizado</v-btn>
                         </v-flex>

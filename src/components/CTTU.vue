@@ -29,13 +29,15 @@
                                 >
                             </v-select>
                         </v-flex>
-                        <v-btn style="background: #3C78D8; color: #fff;" @click="salvar()">SALVAR</v-btn>
-
+                        <v-flex xs12 sm6 mx-auto>
+                        <v-btn style="dark color: #fff;" @click="salvar()">Salvar informações</v-btn>
+                        </v-flex>
             </v-layout>
         </v-container>
     </div>
 </template>
 <script>
+import firebase from 'firebase'
 export default {
     fiery: true,
     data(){
@@ -57,24 +59,25 @@ export default {
         temLesao(){
             return this.lesao=='Não houve lesão' || this.lesao == ''
 
+        },
+        user () {
+            console.log(this.$store.getters.getUser)
+            return this.$store.getters.getUser
         }
     },
     methods:{
-        salvar(){
-              
-            // this.vitimas='',
-            // this.items1=['1','2','3','4','5 ou mais'],
-            // this.lesao= '',
-            // this.items2=['Não houve lesão','Escoriação','Ferimentro','Fratura aberta','Fratura Fechada','Perfuração arma branca','Perfuração arma de fogo'],
-            // this.localLesao='',
-            // this.items3=['Cranio','Face','Pescoço','Dorso','Torax','Abdômem']
-            // this.$router.push('/ocorrencias')
-            this.ocorrencia.lesao= this.lesao
-            this.ocorrencia.localLesao=this.localLesao,
-            this.ocorrencia.atendimento=this.atendimento,
-            this.ocorrencia.status.cttu='andamento',
-            this.$fiery.update(this.ocorrencia),
-            this.$router.push('/ocorrencias')
+   
+        async salvar(){
+            let oc = this.$store.getters.getSelectedOcorrencia
+            var splits = oc['.uid'].split('/', 6)
+            var tempid = splits[4]
+            console.log(tempid)
+            await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                lesao: this.lesao,
+                localLesao:this.localLesao,
+                status_cttu:'andamento'
+            })
+            this.$router.push('/ocorrencias')    
         }
     }
      

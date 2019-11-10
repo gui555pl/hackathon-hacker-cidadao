@@ -29,9 +29,9 @@
                 </v-flex>
                 <v-flex>
                     <v-select
-                    :items="transito"
+                    :items="transitos"
                     label="Parou o trânsito?"
-                    v-model="transitos"
+                    v-model="transito"
                     ></v-select>
                 </v-flex>
                 <v-flex>
@@ -40,6 +40,11 @@
                     label="Quantidade de vítimas"
                     v-model="qtdVit"
                     ></v-select>
+                </v-flex>
+                <v-flex>
+                    <v-textarea outlined v-model="comentario" label="Comentários"  >
+                        
+                    </v-textarea>
                 </v-flex>
                 <v-layout mt-2>
                     <v-flex>
@@ -101,11 +106,11 @@ export default {
         return {
             logradouro: '',
             referencia: '', 
-            tipo: {},
+            tipo:'',
             tipos:['Colisão', 'Atropelamento', 'Capotamento'],
             ocorrencias: this.$fiery(firebase.firestore().collection('ocorrencias')),
-            transitos: {},
-            transito: ['Sim', 'Não'],
+            transito: '',
+            transitos: [{text: 'Sim', value: 'Sim'},{text:'Não', value: 'Não'}],
             bptran: false,
             samu: false,
             cttu: false,
@@ -113,6 +118,7 @@ export default {
             erro: false,
             prf: false,
             pm: false,
+            comentario: '',
             confirmDialog: false,
             status: '',
             qtdVit: '',
@@ -152,16 +158,20 @@ export default {
                 localLesao:'',
                 atendimento:'',
                 ua:'',
+                transito: this.transito,
                 status_samu:'aberto',
                 status_cttu:'aberto',
                 status_prf:'aberto',
                 status_bptran:'aberto',
                 status_pm:'aberto',
                 status_bombeiro:'aberto',
-                qtdVitimas: this.qtdVit
+                qtdVitimas: this.qtdVit,
+                comentario: this.comentario
 
 
             })
+            this.transito= {}
+            this.comentario= ''
             this.logradouro = ''
             this.referencia = ''
             this.tipo = {}

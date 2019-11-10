@@ -1,9 +1,17 @@
 <template>
     <div style="width:100%; height:100%; background-color: #FBFBFF; padding-top: 64px;">
         <v-card-text style="padding-top: 0px;">
-            <v-container v-if="(user == 'samu') && ocorrencia.arrived_cttu" style="transition: 0.5s" ma-0 pa-0>
+            <v-container v-if=" 
+            ocorrencia.already_arrived &&
+            ((user== 'bombeiro')&& ocorrencia.arrived_bombeiro==false
+            ||(user== 'bptran')&& ocorrencia.arrived_bptran==false 
+            ||(user== 'cttu')& ocorrencia.arrived_cttu==false
+            ||(user== 'pm')&ocorrencia.arrived_pm==false
+            ||(user== 'prf')&ocorrencia.arrived_prf==false
+            ||(user== 'samu')& ocorrencia.arrived_samu==false) " 
+            style="transition: 0.5s" ma-0 pa-0>
                 <v-layout my-4>
-                    <v-flex xs12>
+                    <v-flex xs12 >
                         <v-btn @click="trueToFirebase()" style="text-transform: none; width: 100%; border-radius: 20px; font-size: 1.2rem; height: 45px; background: #3C78D8; color: #fff;">Cheguei!</v-btn>
                     </v-flex>
                 </v-layout>
@@ -60,6 +68,16 @@
                                 </v-layout>
                             </v-card-text>
                             <v-card-text style="padding-top: 16px;">
+                            <v-layout>
+                                <v-flex class="fonteCard">
+                                    Trânsito parado
+                                </v-flex>
+                                <v-flex class="fonteCard" style="text-align: right">
+                                    {{ocorrencia.transito}}
+                                </v-flex>
+                            </v-layout>
+                        </v-card-text>
+                            <v-card-text style="padding-top: 16px;">
                                 <v-layout>
                                     <v-flex class="fonteCard">
                                         Tipo de Ocorrência:
@@ -69,6 +87,16 @@
                                     </v-flex>
                                 </v-layout>
                             </v-card-text>
+                            <v-card-text style="padding-top: 16px;">
+                            <v-layout>
+                                <v-flex class="fonteCard" style="width:50%;">
+                                    Comentário
+                                </v-flex>
+                                <v-flex class="fonteCard" style="text-align: right; width:50%;">
+                                    {{ocorrencia.comentario}}
+                                </v-flex>
+                            </v-layout>
+                        </v-card-text>
                             <v-card-text v-if="orgaoPresente(ocorrencia)" style="padding-top: 10px;" class="fonteCard">
                                 Agentes no local:
                                 <v-chip-group
@@ -101,17 +129,19 @@
                             </v-card-text>
                         </v-card>
                         <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == true& ocorrencia.status_samu=='aberto'"></samu>
-                        <cttu v-if="(user == 'cttu') & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
+                        <cttu v-if="(user == 'cttu')& ocorrencia.status_cttu=='aberto'"></cttu>
                         <pm v-if="(user == 'pm') & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
                         <bptran v-if="(user == 'bptran') & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
                         <prf v-if="(user == 'prf') & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
-                        <v-flex xs12 md6 mx-auto pt-4 style="width:50%;">
-                            <v-btn v-if="ocorrencia.status_bombeiro=='andamento'
-                            || ocorrencia.status_bptran=='andamento' 
-                            || ocorrencia.status_cttu=='andamento'
-                            ||ocorrencia.status_pm=='andamento'
-                            ||ocorrencia.status_prf=='andamento'
-                            || ocorrencia.status_samu=='andamento' " 
+                        
+                        <v-flex xs12 md6 mx-auto pt-4 >
+                            <v-btn v-if="
+                            (user== 'bombeiro')& ocorrencia.status_bombeiro=='andamento'
+                            ||(user== 'bptran')& ocorrencia.status_bptran=='andamento' 
+                            ||(user== 'cttu')& ocorrencia.status_cttu=='andamento'
+                            ||(user== 'pm')&ocorrencia.status_pm=='andamento'
+                            ||(user== 'prf')&ocorrencia.status_prf=='andamento'
+                            ||(user== 'samu')& ocorrencia.status_samu=='andamento' " 
                             color="#FFF" 
                             @click="statusFinalizado">Atendimento finalizado</v-btn>
                         </v-flex>
@@ -164,14 +194,32 @@ export default {
             var tempid = splits[4]
             if (this.user == 'samu'){
                 await firebase.firestore().collection('ocorrencias').doc(tempid).update({
-                    already_arrived: true,
                     arrived_samu: true   
                 })
             }
             if (this.user == 'cttu'){
                 await firebase.firestore().collection('ocorrencias').doc(tempid).update({
-                    already_arrived: true,
                     arrived_cttu: true   
+                })
+            }
+             if (this.user == 'pm'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    arrived_pm: true   
+                })
+            }
+             if (this.user == 'bombeiro'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    arrived_bombeiro: true   
+                })
+            }
+             if (this.user == 'prf'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    arrived_prf: true   
+                })
+            }
+             if (this.user == 'bptran'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    arrived_bptran: true   
                 })
             }
         },

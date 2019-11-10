@@ -62,7 +62,7 @@ export default {
             return this.lesao=='Não houve lesão' || this.lesao == ''
 
         },
-               user () {
+        user () {
             console.log(this.$store.getters.getUser)
             return this.$store.getters.getUser
         }

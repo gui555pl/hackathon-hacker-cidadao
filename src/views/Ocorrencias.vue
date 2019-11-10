@@ -52,6 +52,16 @@
                                 </v-flex>
                             </v-layout>
                         </v-card-text>
+                        <v-card-text style="padding-top: 16px;">
+                            <v-layout>
+                                <v-flex class="fonteCard">
+                                    Trânsito parado
+                                </v-flex>
+                                <v-flex class="fonteCard" style="text-align: right">
+                                    {{ocorrencia.transito}}
+                                </v-flex>
+                            </v-layout>
+                        </v-card-text>
                         <v-card-text v-if="orgaoPresente(ocorrencia)" style="padding-top: 16px;" class="fonteCard">
                             Agentes no local:
                             <v-chip-group
@@ -99,7 +109,7 @@ export default {
             status: [ 
                 {text: 'Em aberto', value: 'aberto'},
                 {text: 'Em andamento', value: 'andamento'}, 
-                {text: 'Encerrados', value: 'encerrados'}
+                {text: 'Encerrados', value: 'finalizado'}
             ],
             selectedStatus: {text: 'Em aberto', value: 'aberto'},
             aberto: this.$fiery(firebase.firestore().collection('ocorrencias'), {
@@ -108,8 +118,8 @@ export default {
             andamento: this.$fiery(firebase.firestore().collection('ocorrencias'), {
                 query: q => q.where( this.$store.getters.getUser,'==', true).where('status_' + this.$store.getters.getUser,'==', 'andamento').orderBy('creation_timestamp', 'desc'),
             }),
-            encerrados: this.$fiery(firebase.firestore().collection('ocorrencias'), {
-                query: q => q.where( this.$store.getters.getUser,'==', true).where('status_' + this.$store.getters.getUser,'==', 'encerrados').orderBy('creation_timestamp', 'desc'),
+            finalizado: this.$fiery(firebase.firestore().collection('ocorrencias'), {
+                query: q => q.where( this.$store.getters.getUser,'==', true).where('status_' + this.$store.getters.getUser,'==', 'finalizado').orderBy('creation_timestamp', 'desc'),
             })
         }
     },
@@ -145,9 +155,9 @@ export default {
             }else if (this.selectedStatus.value == 'andamento') {
                 console.log(this.andamento)
                 return this.andamento
-            }else if (this.selectedStatus.value == 'encerrados') {
-                return this.encerrados
-            }
+            }else if (this.selectedStatus.value == 'finalizado') {
+                return this.finalizado
+            } 
         },
         events () {
            return this.selectedStatus.text 

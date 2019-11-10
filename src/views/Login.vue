@@ -110,7 +110,7 @@ export default {
             cod: '',
             lat:'',
             lon:'',
-            orgaos: ['ciodes', 'bombeiros', 'bptran', 'cttu', 'pm', 'prf', 'samu']
+            orgaos: ['ciods', 'bombeiros', 'bptran', 'cttu', 'pm', 'prf', 'samu']
         }
     },
     mounted(){
@@ -132,10 +132,10 @@ export default {
             var self = this
             this.loading = true
             setTimeout(function(){ 
-                if (self.cod !== 'ciodes'){
+                if (self.cod !== 'ciods'){
                     self.$router.push('/ocorrencias')
                 }else {
-                    console.log(self.$router.push('/ciodes'))
+                    console.log(self.$router.push('/ciods'))
                 }
                 
              }, 1000);

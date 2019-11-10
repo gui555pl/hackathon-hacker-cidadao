@@ -6,7 +6,7 @@
                 <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                   
                     <v-card
-                        v-if="ocorrencia.status_bombeiro=='aberto'|| ocorrencia.status_bptran=='aberto'|| ocorrencia.status_cttu=='aberto'|| ocorrencia.status_pm=='aberto'||ocorrencia.status_samu=='aberto'"
+                        v-if="(user=='bombeiro') &&ocorrencia.status_bombeiro=='aberto'|| (user=='bptran') &&ocorrencia.status_bptran=='aberto'|| (user=='cttu') &&ocorrencia.status_cttu=='aberto'|| (user=='pm') &&ocorrencia.status_pm=='aberto'||(user=='samu') &&ocorrencia.status_samu=='aberto'|| (user=='prf') &&ocorrencia.status.prf=='aberto'"
                         elevation-5
                         style="border-radius: 10px;"
                         class="mx-auto fonteCard"
@@ -86,7 +86,7 @@
                 <h3>Eventos em andamento</h3>
                     <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                         <v-card
-                            v-if="ocorrencia.status_bombeiro=='andamento'|| ocorrencia.status_bptran=='andamento'|| ocorrencia.status_cttu=='andamento'|| ocorrencia.status_pm=='andamento'||ocorrencia.status_samu=='andamento'"
+                            v-if="ocorrencia.status_bombeiro=='andamento'|| ocorrencia.status_bptran=='andamento'|| ocorrencia.status_cttu=='andamento'|| ocorrencia.status_pm=='andamento'||ocorrencia.status_samu=='andamento'||ocorrencia.status_prf=='andamento'"
                             elevation-5
                             style="border-radius: 10px;"
                             class="mx-auto fonteCard"
@@ -165,7 +165,7 @@
                     <h3>Eventos encerrados</h3>
                     <v-flex xs12 sm6 md6 lg4 xl4 v-for="(ocorrencia, i) in ocorrencias" :key="i" style="padding: 5px; cursor: pointer" @click="goTo(ocorrencia)"  >
                         <v-card
-                            v-if="ocorrencia.status_bombeiro=='finalizado'|| ocorrencia.status_bptran=='finalizado'|| ocorrencia.status_cttu=='finalizado'||ocorrencia.status_pm=='finalizado'||ocorrencia.status_prf=='finalizado'||ocorrencia.status_samu"
+                            v-if="ocorrencia.status_bombeiro=='finalizado'|| ocorrencia.status_bptran=='finalizado'|| ocorrencia.status_cttu=='finalizado'||ocorrencia.status_pm=='finalizado'||ocorrencia.status_prf=='finalizado'||ocorrencia.status_samu=='finalizado'"
                             elevation-5
                             style="border-radius: 10px;"
                             class="mx-auto fonteCard"

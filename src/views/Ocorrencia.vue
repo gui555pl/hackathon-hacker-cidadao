@@ -100,19 +100,19 @@
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                         </v-card>
-                        <samu v-if="tipo == 'samu'& ocorrencia.arrived_samu == true& ocorrencia.status_samu=='aberto'"></samu>
-                        <cttu v-if="tipo == 'cttu' & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
-                        <pm v-if="tipo == 'pm' & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
-                        <bptran v-if="tipo == 'bptran' & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
-                        <prf v-if="tipo == 'prf' & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
-                        <v-flex xs8 md3 mx-auto pt-4>
+                        <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == true& ocorrencia.status_samu=='aberto'"></samu>
+                        <cttu v-if="(user == 'cttu') & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
+                        <pm v-if="(user == 'pm') & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
+                        <bptran v-if="(user == 'bptran') & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
+                        <prf v-if="(user == 'prf') & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
+                        <v-flex xs12 md6 mx-auto pt-4 style="width:50%;">
                             <v-btn v-if="ocorrencia.status_bombeiro=='andamento'
                             || ocorrencia.status_bptran=='andamento' 
                             || ocorrencia.status_cttu=='andamento'
                             ||ocorrencia.status_pm=='andamento'
                             ||ocorrencia.status_prf=='andamento'
                             || ocorrencia.status_samu=='andamento' " 
-                            color="primary" 
+                            color="#FFF" 
                             @click="statusFinalizado">Atendimento finalizado</v-btn>
                         </v-flex>
                     </v-flex>
@@ -175,10 +175,42 @@ export default {
                 })
             }
         },
-        statusFinalizado(){
-            this.ocorrencia.status='finalizado',
-            this.$fiery.update(this.ocorrencia),
-            this.$router.push('/ocorrencias')
+        async statusFinalizado(){
+            let oc = this.$store.getters.getSelectedOcorrencia
+            var splits = oc['.uid'].split('/', 6)
+
+            var tempid = splits[4]
+            if(this.user=='samu'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    status_samu: 'finalizado' 
+                })
+                
+            }
+            if(this.user=='cttu'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    status_cttu: 'finalizado' 
+                })
+                
+            }
+            if(this.user=='pm'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    status_pm: 'finalizado' 
+                })
+                
+            }
+            if(this.user=='prf'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    status_prf: 'finalizado' 
+                })
+                
+            }
+            if(this.user=='bptran'){
+                await firebase.firestore().collection('ocorrencias').doc(tempid).update({
+                    status_bptran: 'finalizado' 
+                })
+                
+            }
+            this.$router.push('ocorrencias')
         }
      
     },

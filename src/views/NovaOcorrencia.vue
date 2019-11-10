@@ -115,7 +115,7 @@ export default {
             pm: false,
             confirmDialog: false,
             status: '',
-            qtdVit: {},
+            qtdVit: '',
             qtdVitimas: ['Nenhuma vítima','1','2','3','4','5','6','7','8','9','10 ou mais']
         }
     },
@@ -176,7 +176,7 @@ export default {
 
         },
         goHome(){
-            this.$router.push('/ciodes')
+            this.$router.push('/ciods')
         }
        
     }

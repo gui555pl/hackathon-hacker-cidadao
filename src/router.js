@@ -21,8 +21,8 @@ export default new Router({
       }
     },
     {
-      path: '/ciodes',
-      name: 'ciodes',
+      path: '/ciods',
+      name: 'ciods',
       component: Ciodes,
       meta:{
         show: true            

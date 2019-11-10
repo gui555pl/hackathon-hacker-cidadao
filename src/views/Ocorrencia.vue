@@ -128,8 +128,9 @@
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                         </v-card>
-                        <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == true& ocorrencia.status_samu=='aberto'"></samu>
-                        <cttu v-if="(user == 'cttu')& ocorrencia.status_cttu=='aberto'"></cttu>
+                        <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == false & ocorrencia.status_samu=='aberto'"></samu>
+                        <samuInfo  v-if="(user == 'samu')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></samuInfo>
+                        <cttu v-if="(user == 'cttu') & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
                         <pm v-if="(user == 'pm') & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
                         <bptran v-if="(user == 'bptran') & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
                         <prf v-if="(user == 'prf') & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
@@ -155,6 +156,7 @@
 
 <script>
 import samu from '../components/Samu'
+import samuInfo from '../components/SamuInfo'
 import pm from '../components/PM'
 import cttu from '../components/CTTU'
 import firebase from 'firebase'
@@ -172,6 +174,7 @@ export default {
     },
       components: {
         samu: samu,
+        samuInfo,
         pm: pm,
         bptran: bptran,
         bombeiro:bombeiro,

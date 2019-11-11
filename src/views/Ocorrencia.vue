@@ -128,14 +128,22 @@
                                 <div style="padding-top: 16px; padding-bottom: 16px;">Ainda não há órgãos no local</div>
                             </v-card-text>
                         </v-card>
-                        <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == false & ocorrencia.status_samu=='aberto'"></samu>
-                        <samuInfo  v-if="(user == 'samu')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></samuInfo>
-                        <cttu v-if="(user == 'cttu') & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
+                        <SamuInfo  v-if="(user == 'samu')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></SamuInfo>
+                        <PMInfo  v-if="(user == 'pm')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></PMInfo>
+                        <CTTUInfo  v-if="(user == 'cttu')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></CTTUInfo>
+                        <BPTranInfo  v-if="(user == 'bptran')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></BPTranInfo>
+                        <BombeiroInfo  v-if="(user == 'bombeiro')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></BombeiroInfo>
+                        <PRFInfo  v-if="(user == 'prf')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='andamento'"></PRFInfo>
+                        <v-divider></v-divider>
+                        <!-- se não tiver preenchido -->
+                        <samu v-if="(user == 'samu')& ocorrencia.arrived_samu == true & ocorrencia.status_samu=='aberto'"></samu>
                         <pm v-if="(user == 'pm') & ocorrencia.arrived_pm == true& ocorrencia.status_pm=='aberto'"></pm>
+                        <cttu v-if="(user == 'cttu') & ocorrencia.arrived_cttu == true& ocorrencia.status_cttu=='aberto'"></cttu>
                         <bptran v-if="(user == 'bptran') & ocorrencia.arrived_bptran == true& ocorrencia.status_bptran=='aberto'"></bptran>
+                        <bombeiro v-if="(user == 'bombeiro') & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></bombeiro>
                         <prf v-if="(user == 'prf') & ocorrencia.arrived_prf == true& ocorrencia.status_prf=='aberto'"></prf>
-                        
-                        <v-flex xs12 md6 mx-auto pt-4 >
+
+                        <v-flex xs12 md6 mx-auto pt-1 >
                             <v-btn v-if="
                             (user== 'bombeiro')& ocorrencia.status_bombeiro=='andamento'
                             ||(user== 'bptran')& ocorrencia.status_bptran=='andamento' 
@@ -156,14 +164,19 @@
 
 <script>
 import samu from '../components/Samu'
-import samuInfo from '../components/SamuInfo'
+import SamuInfo from '../components/SamuInfo'
 import pm from '../components/PM'
+import PMInfo from '../components/PMInfo'
 import cttu from '../components/CTTU'
-import firebase from 'firebase'
+import CTTUInfo from '../components/CTTUInfo'
 import bptran from '../components/BPTran'
-import bombeiro from '../components/Bombeiro.vue'
-import gps from '../components/Gps'
+import BPTranInfo from '../components/BPTranInfo'
+import bombeiro from '../components/Bombeiro'
+import BombeiroInfo from '../components/BombeiroInfo'
 import prf from '../components/prf'
+import PRFInfo from '../components/PRFInfo'
+import firebase from 'firebase'
+import gps from '../components/Gps'
 export default {
     fiery: true,
     data() {
@@ -174,12 +187,17 @@ export default {
     },
       components: {
         samu: samu,
-        samuInfo,
         pm: pm,
         bptran: bptran,
         bombeiro:bombeiro,
         cttu: cttu,
         prf: prf,
+        SamuInfo,
+        PMInfo,
+        CTTUInfo,
+        BPTranInfo,
+        BombeiroInfo,
+        PRFInfo,
         gps: gps
     },
     methods: {

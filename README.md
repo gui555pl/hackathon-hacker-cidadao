@@ -1,5 +1,8 @@
 # SIAT
 
+## Project prerequisites
+You'll need to have Node.js installed, wich can be found [here](https://nodejs.org/en/): 
+
 ## Project setup
 ```
 npm install

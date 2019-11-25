@@ -6,26 +6,26 @@
                     <h3 class="text-xs-center">Lesão</h3>
                     <v-select
                         disabled
-                        v-model="ocorrencia.lesao"
-                        :label="ocorrencia.lesao" 
+                        v-model="ocorrencia.vitimas"
+                        :label="ocorrencia.vitimas" 
                     >
                     </v-select>
                 </v-flex>
                 <v-flex v-if="temLesao == false">
-                    <h3 class="text-xs-center">Local da lesão</h3>
-                    <v-select
+                    <h3 class="text-xs-center">Placa do carro</h3>
+                    <v-text-field
                         disabled
-                        v-model="ocorrencia.localLesao"
-                        :label="ocorrencia.localLesao" 
+                        v-model="ocorrencia.placa"
+                        :label="ocorrencia.placa" 
                     >
-                    </v-select>
+                    </v-text-field>
                 </v-flex>
                 <v-flex>
-                    <h3 class="text-xs-center">Unidade de atendimento</h3>
+                    <h3 class="text-xs-center">Qtd. de vítimas</h3>
                     <v-select
                         disabled
-                        v-model="ocorrencia.atendimento"
-                        :label="ocorrencia.atendimento" 
+                        v-model="ocorrencia.qtdVitimas"
+                        :label="ocorrencia.qtdVitimas" 
                     >
                     </v-select>
                 </v-flex>

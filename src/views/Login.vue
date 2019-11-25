@@ -110,7 +110,7 @@ export default {
             cod: '',
             lat:'',
             lon:'',
-            orgaos: ['ciods', 'bombeiros', 'bptran', 'cttu', 'pm', 'prf', 'samu']
+            orgaos: ['ciods', 'bombeiro', 'bptran', 'cttu', 'pm', 'prf', 'samu']
         }
     },
     mounted(){
